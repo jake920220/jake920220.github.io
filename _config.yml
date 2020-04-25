@@ -8,12 +8,12 @@ description: 프론트엔드 개발자 Lino의 개발 블로그입니다.
 url: "jake920220.github.io"
 baseurl:
 twitter_username:
-default_img: "./assets/images/blog-banner.jpg"
+default_img: "/assets/images/blog-banner.jpg"
 
 # Profile settings
 name: "Lino Kim"
-profile_img: ""
-profile: "안녕하세요 프론트엔드 개발자 Lino 입니다."
+profile_img: "/assets/images/profile.jpg"
+profile: "<h2>Front-End Developer</h2><h3>Lino Kim</h3><br/><p style='margin-top:24px;'>프론트엔드 개발자로 살아가고 있습니다.</p><p>즐겁고 신나는 일만 가득했으면 좋겠습니다.</p>"
 social:
   github: "https://github.com/jake920220"
 
