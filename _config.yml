@@ -1,21 +1,21 @@
 # Site/SEO settings
-email: 
+email: jake220@naver.com
 permalink: /:year/:month/:day/:title/
-google_analytics: 
+google_analytics:
 
-title: Trophy
-description: 
-url: ""
-baseurl: ""
-twitter_username: 
-default_img: 
+title: Lino 개발 블로그
+description: 프론트엔드 개발자 Lino의 개발 블로그입니다.
+url: "jake920220.github.io"
+baseurl:
+twitter_username:
+default_img: "./assets/images/blog-banner.jpg"
 
 # Profile settings
-name: 
-profile_img: 
-profile: 
+name: "Lino Kim"
+profile_img: ""
+profile: "안녕하세요 프론트엔드 개발자 Lino 입니다."
 social:
-  github: 
+  github: "https://github.com/jake920220"
 
 # Build settings
 markdown: kramdown
@@ -36,7 +36,7 @@ exclude:
   - README.md
 
 # Pagination
-paginate: 5
+paginate: 10
 paginate_path: "/blog/page-:num"
 
 # Sass
