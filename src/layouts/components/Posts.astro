@@ -21,7 +21,11 @@ const { className, posts, fluid } = Astro.props;
 >
   {
     posts.map((post, i: number) => (
-      <div class={i === 0 && fluid != false ? "col-12" : "col-12 sm:col-6"}>
+      <div
+        class={i === 0 && fluid != false ? "col-12" : "col-12 sm:col-6"}
+        data-post-categories={post.data.categories.map((c) => slugify(c)).join(",")}
+        data-post-tags={post.data.tags.map((t) => slugify(t)).join(",")}
+      >
         {post.data.image && (
           <a
             href={`/blog/${post.id}`}

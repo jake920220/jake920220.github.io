@@ -1,0 +1,281 @@
+---
+import { getTaxonomy } from "@/lib/taxonomyParser.astro";
+import { humanize } from "@/lib/utils/textConverter";
+import { BiCategoryAlt } from "react-icons/bi";
+import { FaHashtag } from "react-icons/fa";
+
+const categories = await getTaxonomy("posts", "categories");
+const tags = await getTaxonomy("posts", "tags");
+---
+
+<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 md:bottom-6 md:right-6" id="floating-filter">
+  <!-- Panel (above button) -->
+  <div
+    class="hidden animate-slide-up rounded-2xl border border-black/5 bg-white p-5 shadow-[0_10px_40px_rgba(0,0,0,0.12)]"
+    id="filter-panel"
+    style="min-width:240px;max-width:300px;"
+  >
+    <div class="mb-1">
+      <h4 class="mb-2.5 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gray-500">
+        <BiCategoryAlt className="h-4 w-4" />
+        Categories
+      </h4>
+      <ul class="flex flex-wrap gap-1.5 list-none p-0 m-0">
+        {categories.map((category) => (
+          <li>
+            <button
+              type="button"
+              class="filter-chip inline-block cursor-pointer rounded-full border-2 border-transparent bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-500 transition-all duration-200 hover:-translate-y-px hover:bg-indigo-100 hover:shadow-md"
+              data-filter-type="categories"
+              data-filter-value={category}
+            >
+              {humanize(category)}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="my-3.5 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+
+    <div class="mb-1">
+      <h4 class="mb-2.5 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gray-500">
+        <FaHashtag className="h-3.5 w-3.5" />
+        Tags
+      </h4>
+      <ul class="flex flex-wrap gap-1.5 list-none p-0 m-0">
+        {tags.map((tag) => (
+          <li>
+            <button
+              type="button"
+              class="filter-chip filter-chip-tag inline-block cursor-pointer rounded-full border-2 border-transparent bg-green-50 px-3 py-1 text-xs font-medium text-green-600 transition-all duration-200 hover:-translate-y-px hover:bg-green-100 hover:shadow-md"
+              data-filter-type="tags"
+              data-filter-value={tag}
+            >
+              {humanize(tag)}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div id="filter-actions" style="display:none;">
+      <div class="my-3.5 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+      <div class="text-center">
+        <button
+          type="button"
+          class="inline-block cursor-pointer rounded-lg border border-red-200 bg-red-50 px-4 py-1.5 text-xs font-semibold text-red-500 transition-all duration-200 hover:bg-red-500 hover:text-white"
+          id="filter-clear"
+        >
+          필터 초기화
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toggle button -->
+  <button
+    class="relative flex cursor-pointer items-center gap-2 rounded-full border-none bg-gradient-to-br from-indigo-500 to-purple-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/40 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-500/50"
+    id="filter-toggle"
+    aria-label="필터 열기"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+    </svg>
+    <span>필터</span>
+    <span
+      class="absolute -top-1 -right-1 hidden min-w-[20px] items-center justify-center rounded-full bg-red-500 px-1.5 text-[11px] font-bold leading-5 text-white"
+      id="filter-badge"
+    ></span>
+  </button>
+</div>
+
+<style>
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-slide-up { animation: slide-up 0.3s ease; }
+  /* Active states - toggled via JS */
+  .filter-chip.active {
+    background-color: #6366f1;
+    color: #fff;
+    border-color: #6366f1;
+  }
+  .filter-chip-tag.active {
+    background-color: #16a34a;
+    color: #fff;
+    border-color: #16a34a;
+  }
+</style>
+
+<script>
+  function initFloatingFilter() {
+    const toggle = document.getElementById("filter-toggle");
+    const panel = document.getElementById("filter-panel");
+    const filterBadge = document.getElementById("filter-badge");
+    const filterActions = document.getElementById("filter-actions");
+    const filterClear = document.getElementById("filter-clear");
+    const chips = document.querySelectorAll(".filter-chip");
+
+    if (!toggle || !panel) return;
+
+    // Remove old listeners by cloning
+    const newToggle = toggle.cloneNode(true) as HTMLElement;
+    toggle.parentNode?.replaceChild(newToggle, toggle);
+
+    newToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      panel.classList.toggle("hidden");
+    });
+
+    // Close panel when clicking outside
+    document.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      const filter = document.getElementById("floating-filter");
+      if (filter && !filter.contains(target)) {
+        panel.classList.add("hidden");
+      }
+    });
+
+    // Read current query params and highlight active filters
+    function syncFiltersFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const activeCategory = params.get("categories");
+      const activeTagsParam = params.get("tags");
+      const activeTags = activeTagsParam ? activeTagsParam.split(",") : [];
+      let activeCount = 0;
+
+      // Query live DOM each time (cloned nodes replace originals)
+      const liveChips = document.querySelectorAll(".filter-chip");
+      liveChips.forEach((chip) => {
+        const btn = chip as HTMLButtonElement;
+        const type = btn.dataset.filterType;
+        const value = btn.dataset.filterValue;
+
+        let isActive = false;
+        if (type === "categories") {
+          isActive = activeCategory === value;
+        } else if (type === "tags") {
+          isActive = activeTags.includes(value!);
+        }
+
+        btn.classList.toggle("active", isActive);
+        if (isActive) activeCount++;
+      });
+
+      // Update badge (query live since toggle is cloned)
+      const liveBadge = document.getElementById("filter-badge");
+      if (liveBadge) {
+        if (activeCount > 0) {
+          liveBadge.textContent = String(activeCount);
+          liveBadge.classList.remove("hidden");
+          liveBadge.classList.add("flex");
+        } else {
+          liveBadge.classList.add("hidden");
+          liveBadge.classList.remove("flex");
+        }
+      }
+
+      // Show/hide clear button
+      const liveActions = document.getElementById("filter-actions");
+      if (liveActions) {
+        liveActions.style.display = activeCount > 0 ? "block" : "none";
+      }
+
+      // Apply filtering to posts
+      applyFilters(activeCategory, activeTags);
+    }
+
+    function applyFilters(category: string | null, tags: string[]) {
+      const postItems = document.querySelectorAll("[data-post-categories]");
+      if (postItems.length === 0) return;
+
+      const hasFilters = category !== null || tags.length > 0;
+
+      postItems.forEach((el) => {
+        const item = el as HTMLElement;
+        if (!hasFilters) {
+          item.style.display = "";
+          return;
+        }
+
+        const postCategories = (item.dataset.postCategories || "").split(",").filter(Boolean);
+        const postTags = (item.dataset.postTags || "").split(",").filter(Boolean);
+
+        const matchesCategory =
+          category === null || postCategories.includes(category);
+        const matchesTag =
+          tags.length === 0 || tags.some((t) => postTags.includes(t));
+
+        item.style.display = matchesCategory && matchesTag ? "" : "none";
+      });
+    }
+
+    // Handle chip clicks
+    chips.forEach((chip) => {
+      const newChip = chip.cloneNode(true) as HTMLButtonElement;
+      chip.parentNode?.replaceChild(newChip, chip);
+
+      newChip.addEventListener("click", () => {
+        const type = newChip.dataset.filterType!;
+        const value = newChip.dataset.filterValue!;
+        const params = new URLSearchParams(window.location.search);
+
+        if (type === "categories") {
+          // Single select: toggle on/off
+          const current = params.get("categories");
+          if (current === value) {
+            params.delete("categories");
+          } else {
+            params.set("categories", value);
+          }
+        } else if (type === "tags") {
+          // Multi select: toggle individual tag in comma-separated list
+          const currentParam = params.get("tags");
+          const currentTags = currentParam ? currentParam.split(",") : [];
+
+          if (currentTags.includes(value)) {
+            const newTags = currentTags.filter((t) => t !== value);
+            if (newTags.length > 0) {
+              params.set("tags", newTags.join(","));
+            } else {
+              params.delete("tags");
+            }
+          } else {
+            currentTags.push(value);
+            params.set("tags", currentTags.join(","));
+          }
+        }
+
+        const newUrl = params.toString()
+          ? `${window.location.pathname}?${params.toString()}`
+          : window.location.pathname;
+
+        window.history.pushState({}, "", newUrl);
+        syncFiltersFromURL();
+      });
+    });
+
+    // Clear filters
+    if (filterClear) {
+      const newClear = filterClear.cloneNode(true) as HTMLElement;
+      filterClear.parentNode?.replaceChild(newClear, filterClear);
+      newClear.addEventListener("click", () => {
+        window.history.pushState({}, "", window.location.pathname);
+        syncFiltersFromURL();
+      });
+    }
+
+    // Handle browser back/forward
+    window.addEventListener("popstate", () => {
+      syncFiltersFromURL();
+    });
+
+    // Initial sync
+    syncFiltersFromURL();
+  }
+
+  // Use astro:page-load for View Transitions compatibility
+  document.addEventListener("astro:page-load", initFloatingFilter);
+</script>
