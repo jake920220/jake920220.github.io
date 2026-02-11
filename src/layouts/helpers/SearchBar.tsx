@@ -31,9 +31,9 @@ export default function SearchBar({ searchList }: Props) {
   };
 
   const fuse = new Fuse(searchList, {
-    keys: ["data.title", "data.categories", "data.tags"],
+    keys: ["data.title", "data.categories", "data.tags", "content"],
     includeMatches: true,
-    minMatchCharLength: 2,
+    minMatchCharLength: 1,
     threshold: 0.5,
   });
 
@@ -49,7 +49,7 @@ export default function SearchBar({ searchList }: Props) {
   }, []);
 
   useEffect(() => {
-    let inputResult = inputVal.length > 2 ? fuse.search(inputVal) : [];
+    let inputResult = inputVal.length > 1 ? fuse.search(inputVal) : [];
     setSearchResults(inputResult);
 
     if (inputVal.length > 0) {
@@ -92,7 +92,7 @@ export default function SearchBar({ searchList }: Props) {
           <div key={item.slug} className={"col-12 mb-8 sm:col-6"}>
             {item.data.image && (
               <a
-                href={`/${item.slug}`}
+                href={`/blog/${item.slug}`}
                 className="rounded-lg block hover:text-primary overflow-hidden group"
               >
                 <img
@@ -132,15 +132,13 @@ export default function SearchBar({ searchList }: Props) {
 
             <h3 className="mb-2">
               <a
-                href={`/${item.slug}`}
+                href={`/blog/${item.slug}`}
                 className="block hover:text-primary transition duration-300"
               >
                 {item.data.title}
               </a>
             </h3>
-            <p className="text-text line-clamp-2">
-              {item.content}
-            </p>
+            <p className="text-text line-clamp-2">{item.content}</p>
           </div>
         ))}
       </div>
