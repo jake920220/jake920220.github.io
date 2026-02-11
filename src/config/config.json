@@ -1,6 +1,6 @@
 {
   "site": {
-    "title": "My Blog",
+    "title": "책읽는개발자",
     "base_url": "https://jake920220.github.io",
     "base_path": "/",
     "trailing_slash": false,
@@ -16,7 +16,7 @@
   },
 
   "metadata": {
-    "meta_author": "Blog Owner",
+    "meta_author": "김준현",
     "meta_image": "/images/og-image.png",
     "meta_description": "개발과 독서를 기록하는 블로그"
   },
@@ -28,6 +28,6 @@
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Copyright © 2025 My Blog. All rights reserved."
+    "copyright": "Copyright © 2025 책읽는개발자. All rights reserved."
   }
 }
