@@ -1,8 +1,8 @@
 {
   "site": {
     "title": "My Blog",
-    "base_url": "https://myblog.dev",
-    "base_path": "/",
+    "base_url": "https://jake920220.github.io",
+    "base_path": "/my-blog",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
     "logo": "/images/logo.png",
