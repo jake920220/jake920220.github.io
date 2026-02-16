@@ -3,10 +3,10 @@ title: "클린 코드 - 로버트 C. 마틴"
 meta_title: ""
 description: "로버트 C. 마틴의 클린 코드를 읽고 느낀 점을 정리합니다."
 date: 2025-02-11T00:00:00Z
-image: "/images/posts/02.jpg"
+image: "/images/posts/book.png"
 categories: ["book-review"]
-authors: ["Blog Owner"]
-tags: ["clean-code", "programming", "book"]
+authors: ["김준현"]
+tags: ["programming", "book"]
 draft: false
 ---
 
