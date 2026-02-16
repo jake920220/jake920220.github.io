@@ -7,7 +7,7 @@ image: "/images/posts/book.png"
 categories: ["book-review"]
 authors: ["김준현"]
 tags: ["programming", "book"]
-draft: false
+draft: true
 ---
 
 클린 코드는 소프트웨어 개발자라면 반드시 읽어야 할 필독서 중 하나입니다.

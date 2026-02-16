@@ -64,6 +64,7 @@ const postsCollection = defineCollection({
     description: z.string().optional(),
     date: z.date().optional(),
     image: z.string().optional(),
+    thumbnail: z.string().optional(),
     categories: z.array(z.string()).default(["others"]),
     authors: z.array(z.string()).default(["Admin"]),
     tags: z.array(z.string()).default(["others"]),
