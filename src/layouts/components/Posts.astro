@@ -26,7 +26,7 @@ const { className, posts, fluid } = Astro.props;
       >
         {post.data.image && (
           <a
-            href={`/blog/${post.id}`}
+            href={`/${post.id}`}
             class="rounded-lg block hover:text-primary overflow-hidden group"
           >
             <Image
@@ -63,7 +63,7 @@ const { className, posts, fluid } = Astro.props;
         </ul>
         <h3 class="mb-4">
           <a
-            href={`/blog/${post.id}`}
+            href={`/${post.id}`}
             class="block hover:text-primary transition duration-300"
           >
             {post.data.title}
