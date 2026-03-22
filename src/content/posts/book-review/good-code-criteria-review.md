@@ -1,13 +1,21 @@
 ---
-title: "좋은 코드의 기준(프리렉) | 서평"
-meta_title: "좋은 코드의 기준(프리렉) 서평 | 주니어 개발자를 위한 코드 품질 기준"
-description: "프리렉 출판 『좋은 코드의 기준』 서평. 10년차 개발자의 시행착오를 바탕으로 디자인패턴, 아키텍처, 테스트 자동화를 통해 좋은 코드의 기준을 정리해주며, 초보 엔지니어가 코드를 작성할 때 가져야 할 기준을 생각하게 만든다."
-date: 2026-03-21T00:00:00Z
-image: "/images/posts/book.png"
-thumbnail: "/images/book-review/good-code-criteria.jpeg"
-categories: ["book-review"]
-authors: ["김준현"]
-tags: ["프로그래밍", "IT", "서평", "프리렉"]
+title: 좋은 코드의 기준(프리렉) | 서평
+meta_title: 좋은 코드의 기준(프리렉) 서평 | 주니어 개발자를 위한 코드 품질 기준
+description: >-
+  프리렉 출판 『좋은 코드의 기준』 서평. 10년차 개발자의 시행착오를 바탕으로 디자인패턴, 아키텍처, 테스트 자동화를 통해 좋은 코드의
+  기준을 정리해주며, 초보 엔지니어가 코드를 작성할 때 가져야 할 기준을 생각하게 만든다.
+date: 2026-03-21T00:00:00.000Z
+image: /images/book-review/good-code-criteria.jpeg
+thumbnail: /images/book-review/good-code-criteria.jpeg
+categories:
+  - book-review
+authors:
+  - 김준현
+tags:
+  - 프로그래밍
+  - IT
+  - 서평
+  - 프리렉
 draft: false
 ---
 

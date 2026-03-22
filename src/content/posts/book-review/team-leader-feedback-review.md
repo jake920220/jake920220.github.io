@@ -1,13 +1,20 @@
 ---
-title: "팀장님 피드백 좀 해주세요(씽크스마트) | 서평"
-meta_title: "팀장님 피드백 좀 해주세요(씽크스마트) 서평 | 마틴 | 신입/주니어 조직 적응 가이드"
-description: "씽크스마트 출판, 마틴 저 『팀장님 피드백 좀 해주세요』 서평. 한국 기업 문화에서 신입·주니어가 겪는 갭을 짚고, 마음가짐부터 실수 대처, 상사/팀 내 관계까지 구체적으로 안내하는 책을 읽고 느낀 점을 정리한다."
-date: 2026-02-21T00:00:00Z
-image: "/images/posts/book.png"
-thumbnail: "/images/book-review/team-leader-feedback.jpeg"
-categories: ["book-review"]
-authors: ["김준현"]
-tags: ["자기계발", "서평", "씽크스마트"]
+title: 팀장님 피드백 좀 해주세요(씽크스마트) | 서평
+meta_title: 팀장님 피드백 좀 해주세요(씽크스마트) 서평 | 마틴 | 신입/주니어 조직 적응 가이드
+description: >-
+  씽크스마트 출판, 마틴 저 『팀장님 피드백 좀 해주세요』 서평. 한국 기업 문화에서 신입·주니어가 겪는 갭을 짚고, 마음가짐부터 실수 대처,
+  상사/팀 내 관계까지 구체적으로 안내하는 책을 읽고 느낀 점을 정리한다.
+date: 2026-02-21T00:00:00.000Z
+image: /images/book-review/team-leader-feedback.jpeg
+thumbnail: /images/book-review/team-leader-feedback.jpeg
+categories:
+  - book-review
+authors:
+  - 김준현
+tags:
+  - 자기계발
+  - 서평
+  - 씽크스마트
 draft: false
 ---
 

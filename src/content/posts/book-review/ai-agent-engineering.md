@@ -1,13 +1,21 @@
 ---
-title: "AI 에이전트 엔지니어링(한빛미디어) | 서평"
-meta_title: "AI 에이전트 엔지니어링(한빛미디어) 서평 | AI Agent Engineering | 에이전트 설계 추천 도서"
-description: "한빛미디어 『AI 에이전트 엔지니어링』 서평. 특정 프레임워크에 의존하지 않고 AI 에이전트의 본질적인 설계 방식과 비결정성 관리를 다루는 기술 서적을 읽고 느낀 점을 정리합니다."
-date: 2026-02-07T00:00:00Z
-image: "/images/posts/book.png"
-thumbnail: "/images/book-review/ai-agent-engineering.jpeg"
-categories: ["book-review"]
-authors: ["김준현"]
-tags: ["프로그래밍", "IT", "서평", "한빛미디어"]
+title: AI 에이전트 엔지니어링(한빛미디어) | 서평
+meta_title: AI 에이전트 엔지니어링(한빛미디어) 서평 | AI Agent Engineering | 에이전트 설계 추천 도서
+description: >-
+  한빛미디어 『AI 에이전트 엔지니어링』 서평. 특정 프레임워크에 의존하지 않고 AI 에이전트의 본질적인 설계 방식과 비결정성 관리를 다루는
+  기술 서적을 읽고 느낀 점을 정리합니다.
+date: 2026-02-07T00:00:00.000Z
+image: /images/book-review/ai-agent-engineering.jpeg
+thumbnail: /images/book-review/ai-agent-engineering.jpeg
+categories:
+  - book-review
+authors:
+  - 김준현
+tags:
+  - 프로그래밍
+  - IT
+  - 서평
+  - 한빛미디어
 draft: false
 ---
 

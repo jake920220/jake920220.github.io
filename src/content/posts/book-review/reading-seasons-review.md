@@ -1,13 +1,20 @@
 ---
-title: "계절을 읽는 마음(볕뉘서재) | 서평"
-meta_title: "계절을 읽는 마음(볕뉘서재) 서평 | 볕뉘 | 에세이 추천"
-description: "볕뉘서재 출판, 볕뉘 작가의 에세이 『계절을 읽는 마음』 서평. 거창한 사건보다 일상 속 감정의 결을 조용히 포착하는 짧은 에피소드들로, 잔잔한 위로와 공감을 전한다."
-date: 2026-03-12T00:00:00Z
-image: "/images/posts/book.png"
-thumbnail: "/images/book-review/reading-seasons.jpeg"
-categories: ["book-review"]
-authors: ["김준현"]
-tags: ["에세이", "서평", "볕뉘서재"]
+title: 계절을 읽는 마음(볕뉘서재) | 서평
+meta_title: 계절을 읽는 마음(볕뉘서재) 서평 | 볕뉘 | 에세이 추천
+description: >-
+  볕뉘서재 출판, 볕뉘 작가의 에세이 『계절을 읽는 마음』 서평. 거창한 사건보다 일상 속 감정의 결을 조용히 포착하는 짧은 에피소드들로,
+  잔잔한 위로와 공감을 전한다.
+date: 2026-03-12T00:00:00.000Z
+image: /images/book-review/reading-seasons.jpeg
+thumbnail: /images/book-review/reading-seasons.jpeg
+categories:
+  - book-review
+authors:
+  - 김준현
+tags:
+  - 에세이
+  - 서평
+  - 볕뉘서재
 draft: false
 ---
 

@@ -1,13 +1,20 @@
 ---
-title: "한 명이라도 제대로 친구/애인 사귀기(빅블레스) - 문은석 | 서평"
-meta_title: "한 명이라도 제대로 친구 애인 사귀기(빅블레스) 서평 | 문은석 저 | 인간관계 추천 도서"
-description: "빅블레스 출판, 문은석 저 '한 명이라도 제대로 친구/애인 사귀기' 서평. 단계별 관계 형성 가이드와 건강한 인간관계의 본질을 다룬 책을 읽고 느낀 점을 정리합니다."
-date: 2026-01-29T00:00:00Z
-image: "/images/posts/book.png"
-thumbnail: "/images/book-review/making-true-friends.jpeg"
-categories: ["book-review"]
-authors: ["김준현"]
-tags: ["자기계발", "서평", "빅블레스"]
+title: 한 명이라도 제대로 친구/애인 사귀기(빅블레스) - 문은석 | 서평
+meta_title: 한 명이라도 제대로 친구 애인 사귀기(빅블레스) 서평 | 문은석 저 | 인간관계 추천 도서
+description: >-
+  빅블레스 출판, 문은석 저 '한 명이라도 제대로 친구/애인 사귀기' 서평. 단계별 관계 형성 가이드와 건강한 인간관계의 본질을 다룬 책을
+  읽고 느낀 점을 정리합니다.
+date: 2026-01-29T00:00:00.000Z
+image: /images/book-review/making-true-friends.jpeg
+thumbnail: /images/book-review/making-true-friends.jpeg
+categories:
+  - book-review
+authors:
+  - 김준현
+tags:
+  - 자기계발
+  - 서평
+  - 빅블레스
 draft: false
 ---
 

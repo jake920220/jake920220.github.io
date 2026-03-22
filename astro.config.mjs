@@ -18,7 +18,35 @@ export default defineConfig({
   vite: { plugins: [tailwindcss()] },
   integrations: [
     react(),
-    sitemap(),
+    sitemap({
+      filter: (page) => {
+        // Exclude thin/utility pages from sitemap
+        // `page` can be a string path or a URL-like object depending on plugin version.
+        let p = null;
+        if (typeof page === "string") {
+          // may be a path ("/tags/it/") or a full URL
+          if (page.includes('://')) {
+            try { p = new URL(page).pathname; } catch { p = page; }
+          } else {
+            p = page;
+          }
+        } else if (page && typeof page === "object") {
+          if ("pathname" in page) p = page.pathname;
+          else if ("url" in page) {
+            const u = page.url;
+            if (typeof u === 'string') {
+              try { p = new URL(u).pathname; } catch { p = u; }
+            }
+          }
+        }
+        if (!p) return true;
+        return (
+          !p.startsWith("/search") &&
+          !p.startsWith("/elements") &&
+          !p.startsWith("/tags")
+        );
+      },
+    }),
     AutoImport({
       imports: [
         "@/shortcodes/Button",

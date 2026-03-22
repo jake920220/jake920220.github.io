@@ -17,14 +17,35 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { title, meta_title, image, thumbnail, description } = post.data;
+const { title, meta_title, image, thumbnail, description, date, authors } = post.data;
+
+const url = `${import.meta.env.SITE || "https://jake920220.github.io"}/${post.id}`;
+const ogImage = thumbnail || image;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description: description,
+  image: ogImage ? [`${import.meta.env.SITE || "https://jake920220.github.io"}${ogImage}`] : undefined,
+  datePublished: date ? new Date(date).toISOString() : undefined,
+  dateModified: date ? new Date(date).toISOString() : undefined,
+  author: (authors && authors.length)
+    ? authors.map((a) => ({ "@type": "Person", name: a }))
+    : [{ "@type": "Person", name: "김준현" }],
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": url,
+  },
+};
 ---
 
 <Base
   title={title}
   meta_title={meta_title}
   description={description}
-  image={thumbnail || image}
+  image={ogImage}
+  jsonLd={jsonLd}
 >
   <PostSingle post={post} />
 </Base>
