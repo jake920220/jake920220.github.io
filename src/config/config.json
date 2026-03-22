@@ -1,6 +1,6 @@
 {
   "site": {
-    "title": "책읽는개발자",
+    "title": "준현의 기록",
     "base_url": "https://jake920220.github.io",
     "base_path": "/",
     "trailing_slash": false,
@@ -8,7 +8,7 @@
     "logo": "/images/logo.png",
     "logo_width": "200",
     "logo_height": "34",
-    "logo_text": "My Blog"
+    "logo_text": "준현의 기록"
   },
 
   "settings": {
@@ -18,7 +18,7 @@
   "metadata": {
     "meta_author": "김준현",
     "meta_image": "/images/og-image.png",
-    "meta_description": "개발과 독서를 기록하는 블로그"
+    "meta_description": "읽고 만드는 개발자 · 서평/기술"
   },
 
   "google_tag_manager": {
@@ -28,6 +28,6 @@
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Copyright © 2025 책읽는개발자. All rights reserved."
+    "copyright": "Copyright © 2026 준현의 기록. All rights reserved."
   }
 }

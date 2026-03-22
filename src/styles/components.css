@@ -88,6 +88,16 @@
   @apply prose-td:relative prose-td:z-10 prose-td:px-3 prose-td:py-[18px];
 }
 
+/* about page: make headings feel less "shouty" and improve rhythm */
+.about-content {
+  @apply prose-headings:font-semibold;
+  /* a bit more breathing room under section titles */
+  @apply prose-h2:mt-10 prose-h2:mb-5;
+  @apply prose-h3:mt-6 prose-h3:mb-3;
+  @apply prose-strong:font-semibold;
+  @apply prose-p:leading-relaxed;
+}
+
 /* tab */
 .tab {
   @apply overflow-hidden rounded-lg border border-border;
