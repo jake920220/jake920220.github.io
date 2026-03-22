@@ -3,11 +3,11 @@ title: "클린 코드 - 로버트 C. 마틴"
 meta_title: ""
 description: "로버트 C. 마틴의 클린 코드를 읽고 느낀 점을 정리합니다."
 date: 2025-02-11T00:00:00Z
-image: "/images/posts/02.jpg"
+image: "/images/posts/book.png"
 categories: ["book-review"]
-authors: ["Blog Owner"]
-tags: ["clean-code", "programming", "book"]
-draft: false
+authors: ["김준현"]
+tags: ["programming", "book"]
+draft: true
 ---
 
 클린 코드는 소프트웨어 개발자라면 반드시 읽어야 할 필독서 중 하나입니다.

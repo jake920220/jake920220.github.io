@@ -7,7 +7,7 @@ image: "/images/posts/01.jpg"
 categories: ["development"]
 authors: ["Blog Owner"]
 tags: ["astro", "web", "frontend"]
-draft: false
+draft: true
 ---
 
 Astro는 콘텐츠 중심의 웹사이트를 만들기 위한 현대적인 정적 사이트 생성기입니다.

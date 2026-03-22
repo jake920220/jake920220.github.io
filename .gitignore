@@ -20,5 +20,8 @@ yarn.lock
 # macOS-specific files
 .DS_Store
 
+# local backups
+_backup/
+
 # ignore .astro directory
 .astro
