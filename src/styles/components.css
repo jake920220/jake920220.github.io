@@ -88,6 +88,31 @@
   @apply prose-td:relative prose-td:z-10 prose-td:px-3 prose-td:py-[18px];
 }
 
+/* Prev/Next cards: force dark styling only when .dark class is present */
+.dark .prev-next-card {
+  background-color: color-mix(in oklab, var(--color-slate-900) 40%, transparent);
+  --tw-ring-color: var(--color-slate-700);
+}
+.dark .prev-next-card:hover {
+  background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
+  --tw-ring-color: color-mix(in oklab, var(--color-primary) 35%, transparent);
+}
+.dark .prev-next-meta {
+  color: var(--color-slate-300);
+}
+.dark .prev-next-meta {
+  color: var(--color-slate-200);
+}
+.prev-next-arrow {
+  color: var(--color-slate-700);
+}
+.dark .prev-next-arrow {
+  color: var(--color-slate-200) !important;
+}
+.dark .prev-next-card p {
+  color: var(--color-slate-100);
+}
+
 /* about page: make headings feel less "shouty" and improve rhythm */
 .about-content {
   @apply prose-headings:font-semibold;
@@ -157,51 +182,3 @@
 }
 
 /* notice */
-.notice {
-  @apply mb-6 rounded-lg border px-8 py-6;
-}
-
-.notice-head {
-  @apply flex items-center;
-}
-
-.notice-head svg {
-  @apply mr-3;
-}
-
-.notice-head p {
-  @apply font-primary text-xl font-semibold text-dark;
-}
-
-.notice-body {
-  @apply mt-3;
-}
-
-.notice-body p {
-  @apply my-0;
-}
-
-.notice.note {
-  @apply text-[#1B83E2];
-  @apply border-current;
-}
-
-.notice.tip {
-  @apply text-[#40D294];
-  @apply border-current;
-}
-
-.notice.info {
-  @apply text-[#E3A72C];
-  @apply border-current;
-}
-
-.notice.warning {
-  @apply text-[#DB2C23];
-  @apply border-current;
-}
-
-/* footer */
-footer p a {
-  @apply transition-all duration-200 hover:text-white;
-}

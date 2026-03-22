@@ -14,9 +14,24 @@ const posts = await getSinglePage("posts");
 const { post } = Astro.props;
 const similarPosts = similerItems(post, posts, post.slug);
 const { Content } = await render(post);
-const { title, description, categories, image, thumbnail, date, tags } =
-  post.data;
+const { title, description, categories, image, thumbnail, date, tags } = post.data;
 const headerImage = thumbnail || image;
+
+// 이전글/다음글: 동일 카테고리 내에서만 이동
+const categoryKey = slugify((categories && categories[0]) || "");
+const sameCategoryPosts = posts
+  .filter((p) => (p.data.categories || []).some((c) => slugify(c) === categoryKey))
+  .sort((a, b) => {
+    const ad = a.data.date ? new Date(a.data.date).getTime() : 0;
+    const bd = b.data.date ? new Date(b.data.date).getTime() : 0;
+    return bd - ad; // 최신순
+  });
+const currentIndex = sameCategoryPosts.findIndex((p) => p.id === post.id);
+const nextPost = currentIndex > 0 ? sameCategoryPosts[currentIndex - 1] : null; // 더 최신 글
+const prevPost =
+  currentIndex >= 0 && currentIndex < sameCategoryPosts.length - 1
+    ? sameCategoryPosts[currentIndex + 1]
+    : null; // 더 이전 글
 ---
 
 <section class="section">
@@ -25,7 +40,6 @@ const headerImage = thumbnail || image;
       <div class="md:col-10 text-center">
         <h1 set:html={markdownify(title)} class="h2" />
         <ul class="mt-4 flex flex-wrap items-center justify-center text-text">
-
           <li class="mx-3 flex items-center flex-wrap font-medium">
             <BiCalendarEdit className="mr-1 h-5 w-5 text-gray-600" />
             {dateFormat(date)}
@@ -70,6 +84,7 @@ const headerImage = thumbnail || image;
         <div class="content mb-16 text-left">
           <Content />
         </div>
+
         <div class="flex flex-wrap items-center justify-between">
           <ul class="mr-4 mb-4 space-x-3">
             {
@@ -92,6 +107,50 @@ const headerImage = thumbnail || image;
             slug={post.id}
           />
         </div>
+
+        {/* prev/next: tags+share 아래, giscus 위 */}
+        {
+          (prevPost || nextPost) && (
+            <div class="mt-6 mb-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {prevPost && (
+                <a
+                  href={`/${prevPost.id}`}
+                  class="prev-next-card group block rounded-2xl bg-white p-6 shadow-[0_1px_0_rgba(15,23,42,0.04)] ring-1 ring-inset ring-slate-200/70 transition-colors duration-200 hover:bg-primary/5 hover:ring-primary/30"
+                >
+                  <div class="prev-next-meta flex items-center gap-2 text-xs font-semibold text-slate-600">
+                    <span class="prev-next-arrow">
+                      ←
+                    </span>
+                    <span>이전 글</span>
+                  </div>
+                  <p class="mt-3 text-dark font-semibold line-clamp-2 min-h-[3rem] group-hover:text-primary transition-colors duration-200">
+                    {prevPost.data.title}
+                  </p>
+                </a>
+              )}
+
+              {nextPost && (
+                <a
+                  href={`/${nextPost.id}`}
+                  class={
+                    "prev-next-card group block rounded-2xl bg-white p-6 shadow-[0_1px_0_rgba(15,23,42,0.04)] ring-1 ring-inset ring-slate-200/70 transition-colors duration-200 hover:bg-primary/5 hover:ring-primary/30 text-right " +
+                    (!prevPost ? "sm:col-start-2" : "")
+                  }
+                >
+                  <div class="prev-next-meta flex items-center justify-end gap-2 text-xs font-semibold text-slate-600">
+                    <span>다음 글</span>
+                    <span class="prev-next-arrow">
+                      →
+                    </span>
+                  </div>
+                  <p class="mt-3 text-dark font-semibold line-clamp-2 min-h-[3rem] group-hover:text-primary transition-colors duration-200">
+                    {nextPost.data.title}
+                  </p>
+                </a>
+              )}
+            </div>
+          )
+        }
       </div>
     </article>
   </div>
