@@ -1,0 +1,20 @@
+---
+import Posts from "@/components/Posts.astro";
+import config from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import FloatingFilter from "@/layouts/components/FloatingFilter.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { sortByDate } from "@/lib/utils/sortFunctions";
+
+const posts = await getSinglePage("posts");
+const sortedPosts = sortByDate(posts);
+---
+
+<Base>
+  <section class="section">
+    <div class="container">
+      <Posts posts={sortedPosts} className="mb-16" />
+    </div>
+  </section>
+  <FloatingFilter />
+</Base>

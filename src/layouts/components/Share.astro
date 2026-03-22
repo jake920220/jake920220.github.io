@@ -1,0 +1,111 @@
+---
+import config from "@/config/config.json";
+import {
+  IoLogoFacebook,
+  IoLogoLinkedin,
+  IoLogoPinterest,
+  IoLogoTwitter,
+  IoCopy,
+} from "react-icons/io5";
+
+const { base_url } = config.site;
+const { title, description, slug, className } = Astro.props;
+---
+
+<ul class={`${className}`}>
+  <li class="inline-block">
+    <a
+      aria-label="facebook share button"
+      href={`https://facebook.com/sharer/sharer.php?u=${base_url}/${slug}`}
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      <IoLogoFacebook />
+    </a>
+  </li>
+  <li class="inline-block">
+    <a
+      aria-label="twitter share button"
+      href={`https://twitter.com/intent/tweet/?text=${title}&amp;url=${base_url}/${slug}`}
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      <IoLogoTwitter />
+    </a>
+  </li>
+  <li class="inline-block">
+    <a
+      aria-label="linkedin share button"
+      href={`https://www.linkedin.com/shareArticle?mini=true&url=${base_url}/${slug}&title=${title}&summary=${description}&source=${base_url}`}
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      <IoLogoLinkedin />
+    </a>
+  </li>
+  <li class="inline-block">
+    <a
+      aria-label="pinterest share button"
+      href={`https://pinterest.com/pin/create/button/?url=${base_url}/${slug}&media=&description=${description}`}
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      <IoLogoPinterest />
+    </a>
+  </li>
+  <li class="inline-block">
+    <button
+      aria-label="copy link to clipboard"
+      class="copy-link-btn"
+      data-url={`${base_url}/${slug}`}
+      type="button"
+    >
+      <IoCopy />
+      <span class="copy-tooltip">복사 완료!</span>
+    </button>
+  </li>
+</ul>
+
+<style>
+  .copy-link-btn {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: inherit;
+  }
+  .copy-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .copy-tooltip.show {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll(".copy-link-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const url = (btn as HTMLElement).dataset.url || window.location.href;
+        await navigator.clipboard.writeText(url);
+        const tooltip = btn.querySelector(".copy-tooltip");
+        if (tooltip) {
+          tooltip.classList.add("show");
+          setTimeout(() => tooltip.classList.remove("show"), 1500);
+        }
+      });
+    });
+  });
+</script>
