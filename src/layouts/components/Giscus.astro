@@ -1,0 +1,38 @@
+---
+---
+
+<div id="giscus-container" class="mt-8"></div>
+
+<script>
+  function loadGiscus() {
+    const container = document.getElementById("giscus-container");
+    if (!container) return;
+
+    // Clear previous instance
+    container.innerHTML = "";
+
+    const isDark = document.documentElement.classList.contains("dark");
+
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.setAttribute("data-repo", "jake920220/jake920220.github.io");
+    script.setAttribute("data-repo-id", "R_kgDOROKwYg");
+    script.setAttribute("data-category", "Announcements");
+    script.setAttribute("data-category-id", "DIC_kwDOROKwYs4C4-Qu");
+    script.setAttribute("data-mapping", "pathname");
+    script.setAttribute("data-strict", "0");
+    script.setAttribute("data-reactions-enabled", "1");
+    script.setAttribute("data-emit-metadata", "0");
+    script.setAttribute("data-input-position", "bottom");
+    script.setAttribute("data-theme", isDark ? "dark_dimmed" : "light");
+    script.setAttribute("data-lang", "ko");
+    script.setAttribute("crossorigin", "anonymous");
+    script.async = true;
+
+    container.appendChild(script);
+  }
+
+  // Load on initial page and after Astro page transitions
+  loadGiscus();
+  document.addEventListener("astro:after-swap", loadGiscus);
+</script>

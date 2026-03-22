@@ -1,6 +1,7 @@
 ---
 import Share from "@/components/Share.astro";
 import SimilarPosts from "@/components/SimilarPosts.astro";
+import Giscus from "@/components/Giscus.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import dateFormat from "@/lib/utils/dateFormat";
 import similerItems from "@/lib/utils/similarItems";
@@ -93,6 +94,15 @@ const headerImage = thumbnail || image;
         </div>
       </div>
     </article>
+  </div>
+</section>
+
+<!-- comments -->
+<section class="section pt-0">
+  <div class="container">
+    <div class="md:col-10 mx-auto">
+      <Giscus />
+    </div>
   </div>
 </section>
 
