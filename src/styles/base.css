@@ -53,3 +53,304 @@ strong {
 img {
   @apply inline-block;
 }
+
+/* dark mode overrides */
+.dark body {
+  @apply bg-body text-text;
+}
+
+/* Navigation */
+.dark .nav-dropdown-list {
+  background-color: var(--color-light);
+  border: 1px solid var(--color-border);
+}
+
+.dark .search-modal {
+  background-color: var(--color-body);
+}
+
+/* Prose / Content - explicit dark mode text colors (prose-invert alone lacks specificity) */
+.dark .content {
+  @apply prose-invert;
+  color: var(--color-text) !important;
+}
+
+.dark .content h1,
+.dark .content h2,
+.dark .content h3,
+.dark .content h4,
+.dark .content h5,
+.dark .content h6 {
+  color: var(--color-dark) !important;
+}
+
+.dark .content p,
+.dark .content li,
+.dark .content td,
+.dark .content th,
+.dark .content dd,
+.dark .content dt,
+.dark .content figcaption {
+  color: var(--color-text) !important;
+}
+
+.dark .content strong,
+.dark .content b {
+  color: var(--color-dark) !important;
+}
+
+.dark .content a {
+  color: var(--color-primary) !important;
+}
+
+.dark .content blockquote {
+  color: var(--color-text) !important;
+  border-color: var(--color-primary) !important;
+  background-color: var(--color-light) !important;
+}
+
+.dark .content hr {
+  border-color: var(--color-border) !important;
+}
+
+.dark .content code {
+  color: var(--color-dark) !important;
+  background-color: var(--color-light) !important;
+}
+
+.dark .content pre {
+  background-color: #0d1117 !important;
+}
+
+.dark .content pre code {
+  color: #e6edf3 !important;
+  background-color: transparent !important;
+}
+
+/* Cards & bordered containers */
+.dark .bg-white,
+.dark [class*="bg-white"] {
+  background-color: var(--color-light) !important;
+}
+
+.dark .border-slate-200,
+.dark [class*="border-slate-200"] {
+  border-color: var(--color-border) !important;
+}
+
+.dark .border-black\/5 {
+  border-color: var(--color-border) !important;
+}
+
+/* Text overrides for hardcoded grays */
+.dark .text-gray-500,
+.dark .text-gray-600,
+.dark .text-slate-500,
+.dark .text-slate-600 {
+  color: var(--color-text-light) !important;
+}
+
+.dark .text-black {
+  color: var(--color-dark) !important;
+}
+
+/* Tags in post detail */
+.dark .bg-light {
+  background-color: var(--color-light);
+}
+
+/* About page - icon containers */
+.dark .bg-slate-50 {
+  background-color: var(--color-body) !important;
+}
+
+/* FloatingFilter panel */
+.dark #filter-panel {
+  background-color: var(--color-light);
+  border-color: var(--color-border);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.dark .filter-chip {
+  background-color: rgba(99, 102, 241, 0.15) !important;
+  color: #a5b4fc !important;
+  border-color: transparent !important;
+}
+
+.dark .filter-chip:hover {
+  background-color: rgba(99, 102, 241, 0.25) !important;
+}
+
+.dark .filter-chip-tag {
+  background-color: rgba(22, 163, 74, 0.15) !important;
+  color: #86efac !important;
+}
+
+.dark .filter-chip-tag:hover {
+  background-color: rgba(22, 163, 74, 0.25) !important;
+}
+
+.dark .filter-chip.active {
+  background-color: #6366f1 !important;
+  color: #fff !important;
+}
+
+.dark .filter-chip-tag.active {
+  background-color: #16a34a !important;
+  color: #fff !important;
+}
+
+.dark #filter-clear {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+  color: #fca5a5 !important;
+}
+
+/* Dividers in filter */
+.dark .bg-gradient-to-r.from-transparent.via-gray-200.to-transparent {
+  background-image: linear-gradient(to right, transparent, var(--color-border), transparent) !important;
+}
+
+/* Book review card background */
+.dark .bg-\[radial-gradient\(120\%_120\%_at_10\%_10\%\2c rgba\(248\2c 250\2c 252\2c 0\.95\)_0\%\2c rgba\(255\2c 255\2c 255\2c 0\.9\)_45\%\2c rgba\(241\2c 245\2c 249\2c 0\.8\)_100\%\)\] {
+  background: radial-gradient(120% 120% at 10% 10%, rgba(26, 26, 46, 0.95) 0%, rgba(18, 18, 32, 0.9) 45%, rgba(26, 26, 46, 0.8) 100%) !important;
+}
+
+/* Book review card tag */
+.dark .bg-white\/70 {
+  background-color: rgba(26, 26, 46, 0.7) !important;
+}
+
+.dark .text-slate-600 {
+  color: var(--color-text-light) !important;
+}
+
+/* Shadow adjustments */
+.dark .shadow-\[0_6px_20px_rgba\(15\2c 23\2c 42\2c 0\.06\)\],
+.dark .shadow-\[0_6px_20px_rgba\(15\2c 23\2c 42\2c 0\.05\)\] {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .shadow-\[0_1px_0_rgba\(15\2c 23\2c 42\2c 0\.02\)\] {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Pagination */
+.dark .border-gray-400 {
+  border-color: var(--color-border) !important;
+}
+
+/* Blockquote in dark */
+.dark blockquote {
+  border-color: var(--color-primary) !important;
+  background-color: var(--color-light) !important;
+}
+
+/* Category & tag pages */
+.dark a[class*="bg-light"] {
+  background-color: var(--color-light);
+}
+
+/* Logo - invert in dark mode */
+.dark .navbar-brand img {
+  filter: brightness(0) invert(1);
+}
+
+/* Heading colors in dark mode - ensure all headings are readable */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark .h1,
+.dark .h2,
+.dark .h3,
+.dark .h4,
+.dark .h5,
+.dark .h6 {
+  color: var(--color-dark);
+}
+
+/* About page "About" label */
+.dark .text-sm.font-medium.text-slate-500 {
+  color: var(--color-text-light) !important;
+}
+
+/* Post detail - date/category meta text */
+.dark .text-text {
+  color: var(--color-text);
+}
+
+/* Share icons */
+.dark .social-share a {
+  color: var(--color-text-light) !important;
+}
+
+.dark .social-share a:hover {
+  color: var(--color-primary) !important;
+}
+
+/* Page heading underline */
+.dark .page-heading::after {
+  background-color: var(--color-primary);
+}
+
+/* Hamburger menu on mobile */
+.dark .fill-current {
+  fill: var(--color-dark);
+}
+
+/* About page - gradient bar on cards */
+.dark .bg-gradient-to-r.from-primary\/60 {
+  opacity: 0.8;
+}
+
+/* About page content - all rendered markdown text must be light in dark mode */
+.dark .about-content {
+  color: var(--color-text) !important;
+}
+
+.dark .about-content h2,
+.dark .about-content h3,
+.dark .about-content h4 {
+  color: var(--color-dark) !important;
+}
+
+.dark .about-content p,
+.dark .about-content li {
+  color: var(--color-text) !important;
+}
+
+.dark .about-content strong {
+  color: var(--color-dark) !important;
+}
+
+.dark .about-content a {
+  color: var(--color-primary) !important;
+}
+
+.dark .about-content hr {
+  border-color: var(--color-border) !important;
+}
+
+/* About page markdown - inline HTML cards */
+.dark .about-content .bg-white {
+  background-color: var(--color-light) !important;
+}
+
+.dark .about-content .border-slate-200 {
+  border-color: var(--color-border) !important;
+}
+
+.dark .about-content .text-lg.font-semibold {
+  color: var(--color-dark) !important;
+}
+
+.dark .about-content .text-sm.font-medium.text-slate-500 {
+  color: var(--color-text-light) !important;
+}
+
+.dark .about-content .text-text {
+  color: var(--color-text) !important;
+}
