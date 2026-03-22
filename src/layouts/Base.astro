@@ -42,6 +42,22 @@ const { title, meta_title, description, image, noindex, canonical, jsonLd } =
 <!doctype html>
 <html lang="ko">
   <head>
+    <!-- FOUC prevention: apply dark class before render -->
+    <script is:inline>
+      (function() {
+        function applyTheme() {
+          const saved = localStorage.getItem('theme');
+          if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        }
+        applyTheme();
+        // Re-apply after Astro View Transitions swap
+        document.addEventListener('astro:after-swap', applyTheme);
+      })();
+    </script>
     <!-- google tag manager -->
     {
       config.google_tag_manager.enable && (

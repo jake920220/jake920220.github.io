@@ -19,16 +19,25 @@ const defaultColorGroups = [
   { colors: themeConfig.colors.default.text_color, prefix: "" },
 ];
 const darkColorGroups = [];
+const darkOverrideGroups = [];
 if (themeConfig.colors.darkmode?.theme_color) {
   darkColorGroups.push({
     colors: themeConfig.colors.darkmode.theme_color,
     prefix: "darkmode-",
+  });
+  darkOverrideGroups.push({
+    colors: themeConfig.colors.darkmode.theme_color,
+    prefix: "",
   });
 }
 if (themeConfig.colors.darkmode?.text_color) {
   darkColorGroups.push({
     colors: themeConfig.colors.darkmode.text_color,
     prefix: "darkmode-",
+  });
+  darkOverrideGroups.push({
+    colors: themeConfig.colors.darkmode.text_color,
+    prefix: "",
   });
 }
 
@@ -44,7 +53,7 @@ const getVars = (groups) => {
 };
 
 const defaultVars = getVars(defaultColorGroups);
-const darkVars = getVars(darkColorGroups);
+const darkVars = { ...getVars(darkColorGroups), ...getVars(darkOverrideGroups) };
 
 const baseSize = Number(themeConfig.fonts.font_size.base);
 const scale = Number(themeConfig.fonts.font_size.scale);
