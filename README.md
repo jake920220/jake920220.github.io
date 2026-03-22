@@ -1,116 +1,66 @@
-<h1 align=center>Bookworm Light Astro</h1>
-<p align=center>Bookworm Light is a feature-rich, minimal, highly customizable, easy-to-use free Astro blog theme.</p>
-<h2 align="center"> <a target="_blank" href="https://bookworm-light-astro.vercel.app/" rel="nofollow">👀Demo</a> | <a  target="_blank" href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fbookworm-light-astro.vercel.app%2F&form_factor=desktop">Page Speed (100%)🚀</a>
-</h2>
+<h1 align="center">📖 책읽는개발자</h1>
+<p align="center">기술과 독서, 두 세계를 잇는 개발자의 블로그</p>
 
-<p align=center>
-  <a href="https://github.com/withastro/astro/releases/tag/astro%405.5.2" alt="Contributors">
-    <img src="https://img.shields.io/static/v1?label=ASTRO&message=5.5&color=000&logo=astro" />
-  </a>
-
-  <a href="https://github.com/themefisher/bookworm-light-astro/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/themefisher/bookworm-light-astro" alt="license"></a>
-
-  <img src="https://img.shields.io/github/languages/code-size/themefisher/bookworm-light-astro" alt="code size">
-
-  <a href="https://github.com/themefisher/bookworm-light-astro/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/themefisher/bigspring-light-astro" alt="contributors"></a>
+<p align="center">
+  <a href="https://github.com/withastro/astro"><img src="https://img.shields.io/badge/Astro-5.5-000?logo=astro" alt="Astro" /></a>
+  <a href="https://github.com/jake920220/my-blog/blob/master/LICENSE"><img src="https://img.shields.io/github/license/jake920220/my-blog" alt="License" /></a>
 </p>
 
-![bookworm-light](https://assets.teamosis.com/thumbs/bookworm-light.png)
+---
 
-Bookworm Light is a minimal multi-author free Astro blog theme which is perfect for any kind of blog website. Whether you're interested in food, beauty, travel, photography, lifestyle, fitness, health, or other topics, this theme is a great fit. The theme is super fast and SEO friendly which makes it easier for your content to be discovered by search engines.
+## 👋 소개
 
-## 🔑Key Features
+안녕하세요! **7년차 웹 개발자**이자 **2년차 풀스택 강사**로 활동 중인 개발자입니다.
 
-- 🎨 Highly Customizable (Color, Font, Menu, Social Links, SEO Meta Tags, etc.)
-- 👥 Multi-Author Support
-- 📚 Authors Page
-- 👤 Author Single Page
-- 🔍 Search Functionality with FuseJS
-- 🏷️ Tags and Categories Support
-- 📲 Post Social Share Option
-- 🔗 Similar Post Suggestions
-- ⚡ Fast by Default (95+ Google PageSpeed Score)
-- ⚙️ Netlify Settings Pre-configured
-- 📬 Contact Form Support
-- 🌅 Support OG Image
-- ✍️ Write and Update Content in Markdown / MDX
-- 📚 MDX Components Auto Import
-- 📝 Includes Draft Pages and Posts
-- 🚀 Built with Tailwind CSS Framework
-- 📱 Fully Responsive on Desktops, Tablets, and Smartphones
-- 🔍 SEO Friendly
+현업에서 쌓아온 실전 경험과 강의를 통해 다듬어진 설명력을 바탕으로, 개발 지식을 보다 쉽고 명확하게 전달하고자 이 블로그를 시작했습니다. 또한 **서평단 활동**을 병행하며, IT 서적뿐 아니라 다양한 분야의 책을 읽고 그 인사이트를 기록하고 있습니다.
 
-<!-- installation -->
+> _코드를 작성하는 손으로 책장을 넘기고, 책에서 얻은 영감으로 더 나은 코드를 만듭니다._
 
-## 🔧Installation
+---
 
-After downloading the template, you have some prerequisites to install. Then you can run it on your localhost. You can view the package.json file to see which scripts are included.
+## 📂 블로그 카테고리
 
-### ⚙️Install prerequisites (once for a machine)
+| 카테고리                  | 설명                                                  |
+| ------------------------- | ----------------------------------------------------- |
+| **🛠 개발 (Development)** | 웹 개발, 프레임워크, 아키텍처, 실전 팁 등 기술 포스트 |
+| **📚 서평 (Book Review)** | IT 서적 및 다양한 분야의 도서 리뷰와 독후감           |
 
-- **Node Installation:** [Install node js](https://nodejs.org/en/download/) [Recommended LTS version]
+---
 
-### 🖥️Local setup
+## 🛠 기술 스택
 
-After successfully installing those dependencies, open this template with any IDE [[VS Code](https://code.visualstudio.com/) recommended], and then open the internal terminal of IDM [vs code shortcut <code>ctrl/cmd+\`</code>]
+- **Framework** — [Astro](https://astro.build)
+- **Styling** — Tailwind CSS
+- **Search** — Fuse.js (한국어 지원)
+- **Deployment** — Vercel / Netlify
 
-- Install dependencies
+---
 
-```
+## 🚀 로컬 실행
+
+```bash
+# 의존성 설치
 npm install
-```
 
-- Run locally
-
-```
+# 개발 서버 실행
 npm run dev
-```
 
-After that, it will open up a preview of the template in your default browser, watch for changes to source files, and live-reload the browser when changes are saved.
-
-## 🔨Production Build
-
-After finishing all the customization, you can create a production build by running this command.
-
-```
+# 프로덕션 빌드
 npm run build
 ```
 
-<!-- edit with sitepins -->
+---
 
-## 📝 Edit Content with CMS
+## 🔗 연락처
 
-This template comes pre-configured with [**Sitepins**](https://sitepins.com), a Git-based Headless CMS designed for seamless content management. You can update your website’s text, images, and configuration without touching a single line of code.
+<p>
+  <a href="https://github.com/jake920220"><img src="https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white" alt="GitHub" /></a>
+  <a href="https://www.linkedin.com/in/linokim/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+  <a href="https://www.instagram.com/kimjun__pal/"><img src="https://img.shields.io/badge/Instagram-E4405F?logo=instagram&logoColor=white" alt="Instagram" /></a>
+</p>
 
-**How to get started:**
+---
 
-Click the Edit with Sitepins button below and follow the on-screen instructions to start editing your content visually.
+## 📄 라이선스
 
-  <a target="_blank" href="https://app.sitepins.com/new/clone?name=Bookworm%20Light%20Astro&repository=https://github.com/themefisher/bookworm-light-astro/">
-    <img src="https://sitepins.com/button.svg" alt="Edit with Sitepins">
-  </a>
-  
-<!-- reporting issue -->
-
-## 🐞Reporting Issues
-
-We use GitHub Issues as the official bug tracker for this Template. Please Search [existing issues](https://github.com/themefisher/bookworm-light-astro/issues). It’s possible someone has already reported the same problem.
-If your problem or idea has not been addressed yet, feel free to [open a new issue](https://github.com/themefisher/bookworm-light-astro/issues).
-
-<!-- licence -->
-
-## 📄License
-
-Copyright (c) 2023 - Present, Designed & Developed by [Themefisher](https://themefisher.com)
-
-**Code License:** Released under the [MIT](https://github.com/themefisher/bookworm-light-astro/blob/main/LICENSE) license.
-
-**Image license:** The images are only for demonstration purposes. They have their license, we don't have permission to share those images.
-
-## 👨‍💻Need Custom Development Services?
-
-Besides developing beautifully designed and blazing-fast themes, we help businesses create fast, performance-focused, scalable & secure websites based on NextJs, Hugo, Astro, etc.
-
-If you need a custom theme, theme customization, or complete website development services from scratch you can [Hire Us](https://themefisher.com/contact).
+[MIT License](./LICENSE) © 책읽는개발자
