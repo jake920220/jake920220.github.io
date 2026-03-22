@@ -8,7 +8,22 @@ const posts = await getSinglePage("posts");
 const sortedPosts = sortByDate(posts);
 ---
 
-<Base>
+<Base
+  meta_title={"준현의 기록 | 김준현 (프론트엔드 개발자)"}
+  description={"프론트엔드 개발자 김준현의 기록. Tech(개발/자동화/AI Native)과 Book Review(서평)를 함께 운영합니다."}
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "준현의 기록",
+    alternateName: "김준현 블로그",
+    url: "https://jake920220.github.io/",
+    inLanguage: "ko-KR",
+    author: {
+      "@type": "Person",
+      name: "김준현",
+    },
+  }}
+>
   <section class="section">
     <div class="container">
       <Posts posts={sortedPosts} className="mb-16" />

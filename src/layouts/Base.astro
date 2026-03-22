@@ -136,6 +136,14 @@ const { title, meta_title, description, image, noindex, canonical, jsonLd } =
       )}
     />
 
+    <!-- og-site-name -->
+    <meta property="og:site_name" content={plainify(config.site.title)} />
+
+    <!-- rel=me (identity links) -->
+    <link rel="me" href="https://github.com/jake920220" />
+    <link rel="me" href="https://www.linkedin.com/in/linokim/" />
+    <link rel="me" href="https://www.instagram.com/kimjun__pal/" />
+
     <!-- og-description -->
     <meta
       property="og:description"

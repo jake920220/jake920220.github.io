@@ -1,6 +1,6 @@
 ---
 title: "안녕하세요. 8년차 프론트엔드 개발자 김준현입니다"
-meta_title: "준현의 기록 | About"
+meta_title: "준현의 기록 | 김준현 (프론트엔드 개발자)"
 image: "/images/author.png"
 draft: false
 
