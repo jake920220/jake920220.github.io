@@ -6,7 +6,7 @@ date: 2026-03-22T00:00:00Z
 image: "/images/posts/book.png"
 categories: ["tech"]
 tags: ["Astro", "블로그", "자동화", "AI", "OpenClaw"]
-draft: false
+draft: true
 ---
 
 블로그를 다시 시작하며 가장 먼저 정리하고 싶었던 것은 “무슨 글을, 어떤 방식으로, 얼마나 오래” 운영할 것인가이다. 블로그는 기술이 아니라 습관으로 굴러가고, 습관은 설계가 없으면 쉽게 붕괴한다.

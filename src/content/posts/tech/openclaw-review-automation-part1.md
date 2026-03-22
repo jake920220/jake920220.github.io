@@ -7,7 +7,7 @@ image: "/images/tech/openclaw-review-automation-part1/openclaw-cover.jpg"
 categories: ["tech"]
 authors: ["Blog Owner"]
 tags: ["OpenClaw", "오픈클로", "서평단", "자동화", "AI"]
-draft: false
+draft: true
 ---
 
 책 읽는 일을 좋아해 서평단/리뷰어 활동을 종종 한다. 문제는 ‘읽고 쓰는 일’이 아니라 **모집글을 놓치지 않기 위한 불규칙한 탐색**이다.
