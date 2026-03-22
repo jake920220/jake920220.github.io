@@ -4,7 +4,7 @@ meta_title: ""
 description: "Astro 프레임워크를 사용하여 정적 블로그를 구축하는 방법을 알아봅니다."
 date: 2025-02-12T00:00:00Z
 image: "/images/posts/01.jpg"
-categories: ["development"]
+categories: ["tech"]
 authors: ["Blog Owner"]
 tags: ["astro", "web", "frontend"]
 draft: true

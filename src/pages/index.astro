@@ -1,8 +1,6 @@
 ---
 import Posts from "@/components/Posts.astro";
-import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
-import FloatingFilter from "@/layouts/components/FloatingFilter.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { sortByDate } from "@/lib/utils/sortFunctions";
 
@@ -16,5 +14,4 @@ const sortedPosts = sortByDate(posts);
       <Posts posts={sortedPosts} className="mb-16" />
     </div>
   </section>
-  <FloatingFilter />
 </Base>

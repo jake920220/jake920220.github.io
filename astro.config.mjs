@@ -14,6 +14,16 @@ export default defineConfig({
   site: config.site.base_url ? config.site.base_url : "http://examplesite.com",
   base: config.site.base_path ? config.site.base_path : "/",
   trailingSlash: config.site.trailing_slash ? "always" : "never",
+  // Avoid duplicate content after taxonomy rename (development → tech)
+  redirects: {
+    "/categories/tech": "/tech",
+    "/categories/book-review": "/book-review",
+
+    // legacy
+    "/categories/development": "/tech",
+    "/development/astro-blog-setup": "/tech/astro-blog-setup",
+    "/development/openclaw-review-automation-part1": "/tech/openclaw-review-automation-part1",
+  },
   image: { service: sharp() },
   vite: { plugins: [tailwindcss()] },
   integrations: [

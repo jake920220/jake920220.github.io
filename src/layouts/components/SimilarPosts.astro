@@ -14,6 +14,10 @@ function isBookReview(post: CollectionEntry<"posts">) {
   return (post.data.categories || []).some((c) => slugify(c) === "book-review");
 }
 
+function isTech(post: CollectionEntry<"posts">) {
+  return (post.data.categories || []).some((c) => slugify(c) === "tech");
+}
+
 function getBookThumb(post: CollectionEntry<"posts">) {
   return post.data.thumbnail || post.data.image || "/images/posts/book.png";
 }
@@ -23,6 +27,7 @@ function getBookThumb(post: CollectionEntry<"posts">) {
   {
     posts.map((post, i: number) => {
       const book = isBookReview(post);
+      const dev = isTech(post);
 
       return (
         <div class={`col-12 sm:col-6 md:col-4 ${i === 2 && "hidden md:block"}`}>
@@ -38,7 +43,7 @@ function getBookThumb(post: CollectionEntry<"posts">) {
                   <div class="absolute inset-0 opacity-[0.035] mix-blend-multiply bg-[repeating-linear-gradient(0deg,rgba(15,23,42,0.08)_0,rgba(15,23,42,0.08)_1px,transparent_1px,transparent_3px)]" />
 
                   <div class="absolute left-3 top-3 z-20">
-                    <span class="inline-flex items-center rounded-full border border-slate-200 bg-white/70 px-2 py-0.5 text-[11px] font-medium text-slate-600 backdrop-blur-sm">
+                    <span class="inline-flex items-center rounded-full border border-slate-200 bg-white/70 px-2 py-0.5 text-[11px] font-medium text-slate-600 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-200">
                       서평
                     </span>
                   </div>
@@ -52,6 +57,23 @@ function getBookThumb(post: CollectionEntry<"posts">) {
                     />
                   </div>
                 </div>
+              ) : dev ? (
+                post.data.image && (
+                  <div class="w-full aspect-[16/9] relative overflow-hidden rounded-lg bg-slate-100 border border-slate-200">
+                    <div class="absolute left-3 top-3 z-20">
+                      <span class="inline-flex items-center rounded-full border border-slate-200 bg-white/70 px-2 py-0.5 text-[11px] font-medium text-slate-600 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-200">
+                        기술
+                      </span>
+                    </div>
+                    <Image
+                      class="h-full w-full object-cover group-hover:scale-[1.05] transition duration-300"
+                      src={post.data.image}
+                      alt={post.data.title}
+                      width={445}
+                      height={230}
+                    />
+                  </div>
+                )
               ) : (
                 post.data.image && (
                   <Image
@@ -81,7 +103,7 @@ function getBookThumb(post: CollectionEntry<"posts">) {
                       href={`/categories/${slugify(category)}`}
                       class="mr-2 hover:text-primary font-medium"
                     >
-                      {humanize(category)}
+                      {slugify(category) === "tech" ? "Tech" : humanize(category)}
                       {i !== post.data.categories.length - 1 && ","}
                     </a>
                   </li>

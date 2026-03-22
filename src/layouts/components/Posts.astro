@@ -17,9 +17,24 @@ function isBookReview(post: CollectionEntry<"posts">) {
   return (post.data.categories || []).some((c) => slugify(c) === "book-review");
 }
 
+function isTech(post: CollectionEntry<"posts">) {
+  return (post.data.categories || []).some((c) => slugify(c) === "tech");
+}
+
 function getBookThumb(post: CollectionEntry<"posts">) {
   return post.data.thumbnail || post.data.image || "/images/posts/book.png";
 }
+
+function getExcerpt(post: CollectionEntry<"posts">) {
+  const manual = (post.data as any).excerpt;
+  if (manual && String(manual).trim().length > 0) return String(manual).trim();
+  const desc = (post.data as any).description;
+  if (desc && String(desc).trim().length > 0) return String(desc).trim();
+  const text = plainify(post.body ?? "").replace(/\s+/g, " ").trim();
+  return text.length > 160 ? `${text.slice(0, 160).trim()}…` : text;
+}
+
+
 ---
 
 <div
@@ -28,6 +43,7 @@ function getBookThumb(post: CollectionEntry<"posts">) {
   {
     posts.map((post, i: number) => {
       const book = isBookReview(post);
+      const dev = isTech(post);
       const w = i === 0 && fluid != false ? 925 : 445;
       const h = i === 0 && fluid != false ? 475 : 230;
 
@@ -65,6 +81,24 @@ function getBookThumb(post: CollectionEntry<"posts">) {
                     />
                   </div>
                 </div>
+              ) : dev ? (
+                post.data.image && (
+                  <div class="w-full aspect-[16/9] relative overflow-hidden rounded-lg bg-slate-100 border border-slate-200">
+                    <div class="absolute left-3 top-3 z-20">
+                      <span class="inline-flex items-center rounded-full border border-slate-200 bg-white/70 px-2 py-0.5 text-[11px] font-medium text-slate-600 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/50 dark:text-slate-200">
+                        기술
+                      </span>
+                    </div>
+
+                    <Image
+                      class="h-full w-full object-cover group-hover:scale-[1.03] transition duration-300"
+                      src={post.data.image}
+                      alt={post.data.title}
+                      width={w}
+                      height={h}
+                    />
+                  </div>
+                )
               ) : (
                 post.data.image && (
                   <Image
@@ -94,7 +128,7 @@ function getBookThumb(post: CollectionEntry<"posts">) {
                       href={`/categories/${slugify(category)}`}
                       class="mr-2 hover:text-primary font-medium"
                     >
-                      {humanize(category)}
+                      {slugify(category) === "tech" ? "Tech" : humanize(category)}
                       {i !== post.data.categories.length - 1 && ","}
                     </a>
                   </li>
@@ -103,7 +137,7 @@ function getBookThumb(post: CollectionEntry<"posts">) {
             </li>
           </ul>
 
-          <h3 class="mb-4">
+          <h3 class="mb-3">
             <a
               href={`/${post.id}`}
               class="block hover:text-primary transition duration-300"
@@ -111,7 +145,19 @@ function getBookThumb(post: CollectionEntry<"posts">) {
               {post.data.title}
             </a>
           </h3>
-          <p class="text-text line-clamp-2">{plainify(post.body ?? "")}</p>
+          <ul class="mb-3 flex flex-wrap gap-2">
+            {post.data.tags.slice(0, 4).map((tag: string) => (
+              <li class="inline-block">
+                <a
+                  href={`/tags/${slugify(tag)}`}
+                  class="block rounded-lg bg-light px-3 py-1 font-semibold text-dark text-xs hover:text-primary transition duration-300"
+                >
+                  #{humanize(tag)}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p class="text-text line-clamp-2">{getExcerpt(post)}</p>
         </div>
       );
     })

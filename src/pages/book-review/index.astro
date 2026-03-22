@@ -1,0 +1,25 @@
+---
+import Base from "@/layouts/Base.astro";
+import Posts from "@/components/Posts.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { sortByDate } from "@/lib/utils/sortFunctions";
+
+const posts = await getSinglePage("posts");
+const sortedPosts = sortByDate(posts);
+
+const reviews = sortedPosts.filter((p) =>
+  (p.data.categories || []).some((c: string) => c.toLowerCase() === "book-review"),
+);
+---
+
+<Base title={"Book Review"} meta_title={"준현의 기록 | Book Review"}>
+  <section class="section">
+    <div class="container">
+      <div class="mb-10">
+        <h1 class="h2 mb-2">Book Review</h1>
+        <p class="text-text">관심 있는 책을 읽고, 요약보다 관점과 활용을 중심으로 기록합니다.</p>
+      </div>
+      <Posts posts={reviews} />
+    </div>
+  </section>
+</Base>
