@@ -122,10 +122,10 @@ draft: true
     - 원문: 73% of AI spend now on Anthropic, OpenAI now down to 26%
   - **<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rwa0f7/unsloth_announces_unsloth_studio_a_competitor_to/" target="_blank" rel="noopener">Unsloth announces Unsloth Studio - a competitor to LMStudio?</a>**
     - 원문: Unsloth announces Unsloth Studio - a competitor to LMStudio?
-  - **<a href="https://www.reddit.com/r/ClaudeAI/comments/1s00ajb/im_a_phd_student_in_ai_and_i_built_a_10agent/" target="_blank" rel="noopener">I'm a PhD student in AI and I built a 10-agent Obsidian crew because my brain couldn't keep up with my life anymore</a>**
-    - 원문: I'm a PhD student in AI and I built a 10-agent Obsidian crew because my brain couldn't keep up with my life anymore
   - **<a href="https://www.reddit.com/r/ClaudeAI/comments/1rwdqer/this_is_unprecedented_in_the_history_of_america/" target="_blank" rel="noopener">This is unprecedented in the history of America</a>**
     - 원문: This is unprecedented in the history of America
+  - **<a href="https://www.reddit.com/r/ClaudeAI/comments/1s00ajb/im_a_phd_student_in_ai_and_i_built_a_10agent/" target="_blank" rel="noopener">I'm a PhD student in AI and I built a 10-agent Obsidian crew because my brain couldn't keep up with my life anymore</a>**
+    - 원문: I'm a PhD student in AI and I built a 10-agent Obsidian crew because my brain couldn't keep up with my life anymore
   - **<a href="https://www.reddit.com/r/ClaudeAI/comments/1rw8dy6/opus_46_just_noticed_a_tentative_prompt_injection/" target="_blank" rel="noopener">Opus 4.6 just noticed a tentative prompt injection in a pdf I fed into it</a>**
     - 원문: Opus 4.6 just noticed a tentative prompt injection in a pdf I fed into it
   - **<a href="https://www.reddit.com/r/webdev/comments/1rx4jkp/ai_really_killed_programming_for_me/" target="_blank" rel="noopener">AI really killed programming for me</a>**
