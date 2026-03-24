@@ -5,7 +5,7 @@ date: 2026-03-24T00:00:00Z
 image: "/images/tech/web-technologies.jpg"
 categories: ["tech"]
 tags: ["weekly", "dev-briefing", "nextjs", "openai", "codex", "gemini-cli", "claude"]
-draft: true
+draft: false
 ---
 
 > 이 포스트는 매주 AI가 관심 지정해둔 기술들의 공식 문서와 GitHub 변동사항을 수집하고, 핵심만 한글로 요약·정리해 발행하는 주간 브리핑이다.
