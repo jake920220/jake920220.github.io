@@ -86,10 +86,10 @@ const prevPost =
         </div>
 
         <div class="flex flex-wrap items-center justify-between">
-          <ul class="mr-4 mb-4 space-x-3">
+          <ul class="mr-4 mb-4 flex flex-wrap gap-3">
             {
               tags.map((tag: string) => (
-                <li class="inline-block">
+                <li>
                   <a
                     href={`/tags/${slugify(tag)}`}
                     class="block rounded-lg bg-light px-4 py-2 font-semibold text-dark text-sm hover:text-primary transition duration-300"
