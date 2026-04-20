@@ -7,7 +7,7 @@ image: "/images/tech/openclaw-review-automation/openclaw-cover.jpg"
 categories: ["tech"]
 authors: ["Blog Owner"]
 tags: ["OpenClaw", "오픈클로", "사락", "YES24", "블로그 자동화", "서평", "자동화", "에이전트"]
-draft: true
+draft: false
 ---
 
 1부에서 이어지는 내용입니다. 이전 글: [OpenClaw로 서평 자동화 만들기 1부: 조회와 신청을 운영 가능한 흐름으로 바꾸기](/posts/tech/openclaw-review-automation-part1)
