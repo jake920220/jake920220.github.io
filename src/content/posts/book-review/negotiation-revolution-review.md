@@ -5,8 +5,8 @@ description: >-
   오명호 저 『협상 레볼루션』 서평. 협상을 설득의 기술이 아니라 상대가 스스로 선택할 수 있도록 구조를 설계하는 과정으로 풀어낸 책을 읽고,
   일상에서도 충분히 활용할 수 있겠다고 느낀 포인트를 정리했다.
 date: 2026-04-21T00:00:00.000Z
-image: /images/book-review/negotiation-revolution.jpeg
-thumbnail: /images/book-review/negotiation-revolution.jpeg
+image: /images/book-review/negotiation-revolution.jpg
+thumbnail: /images/book-review/negotiation-revolution.jpg
 categories:
   - book-review
 authors:
