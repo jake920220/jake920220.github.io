@@ -37,6 +37,9 @@ export interface Props {
 // distructure frontmatters
 const { title, meta_title, description, image, noindex, canonical, jsonLd } =
   Astro.props;
+
+const currentUrl = new URL(Astro.url.pathname, config.site.base_url).toString();
+const canonicalUrl = canonical || currentUrl;
 ---
 
 <!doctype html>
@@ -110,7 +113,7 @@ const { title, meta_title, description, image, noindex, canonical, jsonLd } =
     </title>
 
     <!-- canonical url -->
-    {canonical && <link rel="canonical" href={canonical} item-prop="url" />}
+    <link rel="canonical" href={canonicalUrl} item-prop="url" />
 
     <!-- noindex robots -->
     {noindex && <meta name="robots" content="noindex,nofollow" />}
@@ -152,10 +155,7 @@ const { title, meta_title, description, image, noindex, canonical, jsonLd } =
       )}
     />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content={`${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`}
-    />
+    <meta property="og:url" content={canonicalUrl} />
 
     <!-- twitter-title -->
     <meta
