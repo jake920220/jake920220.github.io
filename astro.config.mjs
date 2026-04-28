@@ -29,6 +29,8 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
+      filenameBase: "sitemap",
+      entryLimit: 50000,
       filter: (page) => {
         // Exclude thin/utility pages from sitemap
         // `page` can be a string path or a URL-like object depending on plugin version.
