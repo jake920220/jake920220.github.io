@@ -1,5 +1,6 @@
 ---
 import Posts from "@/components/Posts.astro";
+import TagItem from "@/components/TagItem.astro";
 import Base from "@/layouts/Base.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { getTaxonomy } from "@/lib/taxonomyParser.astro";
@@ -40,31 +41,18 @@ const title = humanize(tag || "");
 
         {/* Tag chips navigation */}
         <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
-          <a
-            href="/"
-            class="rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
-          >
-            전체 보기
-          </a>
+          <TagItem name="전체 보기" href="/" size="sm" showHash={false} />
           {
             allTags.map((t) => {
               const isActive = slugify(t) === tag;
               return (
-                <a
-                  href={`/tags/${slugify(t)}`}
-                  class={`rounded-full px-3.5 py-1.5 text-xs font-medium transition ${
-                    isActive
-                      ? "bg-primary text-white shadow-sm"
-                      : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
-                  }`}
-                >
-                  #{humanize(t)}
-                </a>
+                <TagItem name={t} size="sm" active={isActive} />
               );
             })
           }
         </div>
       </div>
+
 
       <Posts posts={sortedPosts} fluid={false} />
     </div>

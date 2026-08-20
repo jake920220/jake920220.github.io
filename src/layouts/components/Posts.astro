@@ -1,6 +1,8 @@
 ---
+import TagItem from "@/components/TagItem.astro";
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
+
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { BiCalendarEdit, BiCategoryAlt } from "react-icons/bi";
@@ -92,19 +94,15 @@ function getExcerpt(post: CollectionEntry<"posts">) {
               {post.data.title}
             </a>
           </h3>
-          <ul class="mb-3 flex flex-wrap gap-2">
+          <ul class="mb-3 flex flex-wrap gap-1.5">
             {post.data.tags.slice(0, 4).map((tag: string) => (
               <li class="inline-block">
-                <a
-                  href={`/tags/${slugify(tag)}`}
-                  class="block rounded-lg bg-light px-3 py-1 font-semibold text-dark text-xs hover:text-primary transition duration-300"
-                >
-                  #{humanize(tag)}
-                </a>
+                <TagItem name={tag} size="sm" />
               </li>
             ))}
           </ul>
           <p class="text-text line-clamp-2">{getExcerpt(post)}</p>
+
         </div>
       );
     })

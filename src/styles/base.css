@@ -47,7 +47,12 @@ h6,
 
 b,
 strong {
-  @apply font-semibold;
+  @apply font-bold text-slate-900;
+}
+
+.dark b,
+.dark strong {
+  @apply text-slate-100;
 }
 
 img {
@@ -58,6 +63,7 @@ img {
 .dark body {
   @apply bg-body text-text;
 }
+
 
 /* Navigation */
 .dark .nav-dropdown-list {

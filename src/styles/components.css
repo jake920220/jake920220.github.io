@@ -115,13 +115,13 @@
 
 /* about page: make headings feel less "shouty" and improve rhythm */
 .about-content {
-  @apply prose-headings:font-semibold;
-  /* a bit more breathing room under section titles */
+  @apply prose-headings:font-bold prose-headings:text-slate-900 dark:prose-headings:text-white;
   @apply prose-h2:mt-10 prose-h2:mb-5;
   @apply prose-h3:mt-6 prose-h3:mb-3;
-  @apply prose-strong:font-semibold;
+  @apply prose-strong:font-bold prose-strong:text-slate-900 dark:prose-strong:text-white;
   @apply prose-p:leading-relaxed;
 }
+
 
 /* tab */
 .tab {
