@@ -1,23 +1,17 @@
 ---
-title: AI 에이전트 엔지니어링(한빛미디어) | 서평
-meta_title: AI 에이전트 엔지니어링(한빛미디어) 서평 | AI Agent Engineering | 에이전트 설계 추천 도서
-description: >-
-  한빛미디어 『AI 에이전트 엔지니어링』 서평. 특정 프레임워크에 의존하지 않고 AI 에이전트의 본질적인 설계 방식과 비결정성 관리를 다루는
-  기술 서적을 읽고 느낀 점을 정리합니다.
+title: "AI 에이전트 엔지니어링(한빛미디어) | 서평"
+meta_title: "AI 에이전트 엔지니어링(한빛미디어) 서평 | AI Agent Engineering | 에이전트 설계 추천 도서"
+description: "한빛미디어 『AI 에이전트 엔지니어링』 서평. 특정 프레임워크에 의존하지 않고 AI 에이전트의 본질적인 설계 방식과 비결정성 관리를 다루는 기술 서적을 읽고 느낀 점을 정리합니다."
 date: 2026-02-07T00:00:00.000Z
-image: /images/book-review/ai-agent-engineering.jpeg
-thumbnail: /images/book-review/ai-agent-engineering.jpeg
-categories:
-  - book-review
-authors:
-  - 김준현
-tags:
-  - 프로그래밍
-  - IT
-  - 서평
-  - 한빛미디어
+image: "/images/book-review/ai-agent-engineering.jpeg"
+thumbnail: "/images/book-review/ai-agent-engineering.jpeg"
+categories: ["tech"]
+authors: ["Blog Owner"]
+tags: ["ai", "에이전트 엔지니어링", "서평"]
 draft: false
 ---
+
+> *이 포스트는 YES24 리뷰어클럽의 서평단 이벤트를 통해 도서를 제공받아 작성되었습니다.*
 
 기술 서적에 대한 서평을 남기기 위해 평소 개인 공부 목적으로 볼 때보다 다소 더 꼼꼼하게 읽었다. 특히 소프트웨어 엔지니어로서 공식 문서를 많이 보고, 이미 익숙한 기술에 대한 기술 서적과 방법론 등에 대한 서적들을 보다가, 오랜만에 베이스가 없는 AI 분야의 기술 서적을 읽으니 주니어로 돌아간 듯한 기분이 들었다.
 

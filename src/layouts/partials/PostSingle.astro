@@ -17,20 +17,17 @@ const { Content } = await render(post);
 const { title, description, categories, image, thumbnail, date, tags } = post.data;
 const headerImage = thumbnail || image;
 
-// 이전글/다음글: 동일 카테고리 내에서만 이동
-const categoryKey = slugify((categories && categories[0]) || "");
-const sameCategoryPosts = posts
-  .filter((p) => (p.data.categories || []).some((c) => slugify(c) === categoryKey))
-  .sort((a, b) => {
-    const ad = a.data.date ? new Date(a.data.date).getTime() : 0;
-    const bd = b.data.date ? new Date(b.data.date).getTime() : 0;
-    return bd - ad; // 최신순
-  });
-const currentIndex = sameCategoryPosts.findIndex((p) => p.id === post.id);
-const nextPost = currentIndex > 0 ? sameCategoryPosts[currentIndex - 1] : null; // 더 최신 글
+// 이전글/다음글: 전체 포스트 최신순 기준 이동
+const sortedPosts = posts.slice().sort((a, b) => {
+  const ad = a.data.date ? new Date(a.data.date).getTime() : 0;
+  const bd = b.data.date ? new Date(b.data.date).getTime() : 0;
+  return bd - ad; // 최신순
+});
+const currentIndex = sortedPosts.findIndex((p) => p.id === post.id);
+const nextPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null; // 더 최신 글
 const prevPost =
-  currentIndex >= 0 && currentIndex < sameCategoryPosts.length - 1
-    ? sameCategoryPosts[currentIndex + 1]
+  currentIndex >= 0 && currentIndex < sortedPosts.length - 1
+    ? sortedPosts[currentIndex + 1]
     : null; // 더 이전 글
 ---
 
@@ -44,27 +41,9 @@ const prevPost =
             <BiCalendarEdit className="mr-1 h-5 w-5 text-gray-600" />
             {dateFormat(date)}
           </li>
-          <li class="mx-3 flex items-center flex-wrap">
-            <BiCategoryAlt className="mr-1 h-[18px] w-[18px] text-gray-600" />
-
-            <ul>
-              {
-                categories.map((category: string, i: number) => (
-                  <li class="inline-block">
-                    <a
-                      href={`/categories/${slugify(category)}`}
-                      class="mr-2 hover:text-primary font-medium"
-                    >
-                      {humanize(category)}
-                      {i !== post.data.categories.length - 1 && ","}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-          </li>
         </ul>
       </div>
+
 
       <div class="col-12 mt-8 mb-2">
         {

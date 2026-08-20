@@ -18,12 +18,16 @@ export default defineConfig({
     "/categories/tech": "/tech",
     "/categories/book-review": "/tech",
     "/book-review": "/tech",
+    "/book-review/ai-agent-engineering": "/tech/ai-agent-engineering",
+    "/book-review/good-code-criteria-review": "/tech/good-code-criteria-review",
+    "/book-review/good-code-criteria": "/tech/good-code-criteria-review",
 
     // legacy
     "/categories/development": "/tech",
     "/development/astro-blog-setup": "/tech/astro-blog-setup",
     "/development/openclaw-review-automation-part1": "/tech/openclaw-review-automation-part1",
   },
+
   image: { service: sharp() },
   vite: { plugins: [tailwindcss()] },
   integrations: [
