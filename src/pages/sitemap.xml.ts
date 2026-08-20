@@ -1,7 +1,7 @@
 import { getCollection } from "astro:content";
 import config from "@/config/config.json";
 
-const EXCLUDED_PREFIXES = ["/search", "/elements", "/book-review", "/categories/book-review", "/categories/tech", "/categories/development", "/development"];
+const EXCLUDED_PREFIXES = ["/search", "/elements", "/tech", "/book-review", "/categories/book-review", "/categories/tech", "/categories/development", "/development"];
 
 type SitemapEntry = {
   path: string;
@@ -36,11 +36,11 @@ export async function GET() {
     { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
   ];
 
-
   const postEntries: SitemapEntry[] = posts
-    .filter((post) => !post.id.startsWith("-index") && !post.id.startsWith("book-review"))
+    .filter((post) => !post.id.startsWith("-index") && !post.id.startsWith("drafts/") && !post.id.startsWith("book-review"))
     .map((post) => ({
       path: `/${post.id}`,
+
       lastmod: formatLastMod(
         post.data.modDatetime ?? post.data.pubDatetime ?? post.data.date,
       ),
