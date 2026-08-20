@@ -1,7 +1,7 @@
 import { getCollection } from "astro:content";
 import config from "@/config/config.json";
 
-const EXCLUDED_PREFIXES = ["/search", "/elements", "/tech", "/book-review", "/categories/book-review", "/categories/tech", "/categories/development", "/development"];
+const EXCLUDED_PREFIXES = ["/search", "/elements", "/tech", "/book-review", "/categories", "/authors", "/privacy-policy", "/development"];
 
 type SitemapEntry = {
   path: string;
@@ -28,13 +28,10 @@ export async function GET() {
 
   const staticEntries: SitemapEntry[] = [
     { path: "/", changefreq: "daily", priority: "1.0" },
+    { path: "/about", changefreq: "monthly", priority: "0.8" },
     { path: "/tags", changefreq: "weekly", priority: "0.8" },
-    { path: "/about", changefreq: "monthly", priority: "0.7" },
-    { path: "/authors", changefreq: "monthly", priority: "0.5" },
-    { path: "/authors/blog-owner", changefreq: "monthly", priority: "0.5" },
-    { path: "/categories", changefreq: "weekly", priority: "0.6" },
-    { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
   ];
+
 
   const postEntries: SitemapEntry[] = posts
     .filter((post) => !post.id.startsWith("-index") && !post.id.startsWith("drafts/") && !post.id.startsWith("book-review"))

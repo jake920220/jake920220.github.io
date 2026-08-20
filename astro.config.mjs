@@ -15,12 +15,17 @@ export default defineConfig({
   trailingSlash: config.site.trailing_slash ? "always" : "never",
   // Avoid duplicate content after taxonomy rename (development → tech)
   redirects: {
-    // Section / Taxonomy roots -> Home
+    // Section / Taxonomy roots -> Home or relevant page
     "/tech": "/",
     "/categories/tech": "/",
     "/categories/book-review": "/",
     "/categories/development": "/",
+    "/categories": "/tags",
     "/book-review": "/",
+    "/authors": "/about",
+    "/authors/blog-owner": "/about",
+    "/privacy-policy": "/",
+
 
     // Post URLs -> Clean Root URLs
     "/tech/openclaw-review-automation-part1": "/openclaw-review-automation-part1",
