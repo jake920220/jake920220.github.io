@@ -1,15 +1,17 @@
 import { getCollection } from "astro:content";
 import config from "@/config/config.json";
 
-const EXCLUDED_PREFIXES = ["/search", "/elements", "/tags"];
+const EXCLUDED_PREFIXES = ["/search", "/elements", "/book-review", "/categories/book-review", "/categories/tech", "/categories/development", "/development"];
 
 type SitemapEntry = {
   path: string;
   lastmod?: string;
+  changefreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
+  priority?: string;
 };
 
 function shouldInclude(pathname: string) {
-  return !EXCLUDED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
+  return !EXCLUDED_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
 }
 
 function toAbsoluteUrl(pathname: string) {
@@ -18,33 +20,32 @@ function toAbsoluteUrl(pathname: string) {
 }
 
 function formatLastMod(date?: Date) {
-  return date ? date.toISOString() : undefined;
+  return date ? new Date(date).toISOString() : undefined;
 }
 
 export async function GET() {
   const posts = await getCollection("posts", ({ data }) => data.draft !== true);
 
   const staticEntries: SitemapEntry[] = [
-    { path: "/" },
-    { path: "/about" },
-    { path: "/authors" },
-    { path: "/authors/blog-owner" },
-    { path: "/book-review" },
-    { path: "/categories" },
-    { path: "/categories/book-review" },
-    { path: "/categories/tech" },
-    { path: "/page/2" },
-    { path: "/privacy-policy" },
-    { path: "/tech" },
+    { path: "/", changefreq: "daily", priority: "1.0" },
+    { path: "/tags", changefreq: "weekly", priority: "0.8" },
+    { path: "/about", changefreq: "monthly", priority: "0.7" },
+    { path: "/authors", changefreq: "monthly", priority: "0.5" },
+    { path: "/authors/blog-owner", changefreq: "monthly", priority: "0.5" },
+    { path: "/categories", changefreq: "weekly", priority: "0.6" },
+    { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
   ];
 
+
   const postEntries: SitemapEntry[] = posts
-    .filter((post) => !post.id.startsWith("-index"))
+    .filter((post) => !post.id.startsWith("-index") && !post.id.startsWith("book-review"))
     .map((post) => ({
       path: `/${post.id}`,
       lastmod: formatLastMod(
         post.data.modDatetime ?? post.data.pubDatetime ?? post.data.date,
       ),
+      changefreq: "monthly",
+      priority: "0.8",
     }));
 
   const entries = [...staticEntries, ...postEntries]
@@ -57,7 +58,7 @@ export async function GET() {
   const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries
     .map(
       (entry) =>
-        `  <url><loc>${toAbsoluteUrl(entry.path)}</loc>${entry.lastmod ? `<lastmod>${entry.lastmod}</lastmod>` : ""}</url>`,
+        `  <url>\n    <loc>${toAbsoluteUrl(entry.path)}</loc>${entry.lastmod ? `\n    <lastmod>${entry.lastmod}</lastmod>` : ""}${entry.changefreq ? `\n    <changefreq>${entry.changefreq}</changefreq>` : ""}${entry.priority ? `\n    <priority>${entry.priority}</priority>` : ""}\n  </url>`,
     )
     .join("\n")}\n</urlset>\n`;
 
@@ -68,3 +69,4 @@ export async function GET() {
     },
   });
 }
+

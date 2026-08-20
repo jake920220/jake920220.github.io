@@ -1,10 +1,12 @@
 ---
-title: Blog Owner
-meta_title: ""
+title: 김준현
+meta_title: "김준현 | 프론트엔드 개발자"
 image: /images/author.png
-description: "개발과 독서를 사랑하는 블로거"
+description: "8년차 프론트엔드 개발자 & 웹 프로그래밍 강사"
 social:
-  github: https://github.com/
+  github: https://github.com/jake920220
+  linkedin: https://www.linkedin.com/in/linokim/
 ---
 
-개발과 독서에 관심이 많은 블로거입니다.
+웹 개발과 최적화, 자동화에 관심이 많은 8년차 프론트엔드 개발자입니다.
+

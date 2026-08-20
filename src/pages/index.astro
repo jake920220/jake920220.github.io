@@ -2,20 +2,23 @@
 import Posts from "@/components/Posts.astro";
 import Base from "@/layouts/Base.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
+import { getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { sortByDate } from "@/lib/utils/sortFunctions";
+import { humanize, slugify } from "@/lib/utils/textConverter";
 
 const posts = await getSinglePage("posts");
 const sortedPosts = sortByDate(posts);
+const tags = await getTaxonomy("posts", "tags");
 ---
 
 <Base
-  meta_title={"준현의 기록 | 김준현 (프론트엔드 개발자)"}
-  description={"프론트엔드 개발자 김준현의 기록. Tech(개발/자동화/AI Native)과 Book Review(서평)를 함께 운영합니다."}
+  meta_title={"준현의 기록 | 김준현 (프론트엔드 개발자 기술 블로그)"}
+  description={"프론트엔드 개발자 김준현의 기술 블로그입니다. 웹 개발, TypeScript, React, 성능 최적화, 자동화 및 AI Native 엔지니어링 기록을 다룹니다."}
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "준현의 기록",
-    alternateName: "김준현 블로그",
+    alternateName: "김준현 기술 블로그",
     url: "https://jake920220.github.io/",
     inLanguage: "ko-KR",
     author: {
@@ -26,7 +29,29 @@ const sortedPosts = sortByDate(posts);
 >
   <section class="section">
     <div class="container">
+      {/* Quick Tag Filter Bar */}
+      <div class="mb-10 flex flex-wrap items-center gap-2 border-b border-slate-200/80 pb-6 dark:border-slate-800">
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 mr-1">Tags:</span>
+        <a
+          href="/"
+          class="rounded-full bg-primary px-3.5 py-1 text-xs font-semibold text-white shadow-sm"
+        >
+          All
+        </a>
+        {
+          tags.map((tag) => (
+            <a
+              href={`/tags/${slugify(tag)}`}
+              class="rounded-full border border-slate-200 bg-white px-3.5 py-1 text-xs font-medium text-slate-600 transition hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-primary dark:hover:text-primary"
+            >
+              #{humanize(tag)}
+            </a>
+          ))
+        }
+      </div>
+
       <Posts posts={sortedPosts} className="mb-16" />
     </div>
   </section>
 </Base>
+

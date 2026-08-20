@@ -5,7 +5,7 @@ import { getSinglePage } from "@/lib/contentParser.astro";
 import { getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { sortByDate } from "@/lib/utils/sortFunctions";
 import taxonomyFilter from "@/lib/utils/taxonomyFilter";
-import { humanize } from "@/lib/utils/textConverter";
+import { humanize, slugify } from "@/lib/utils/textConverter";
 
 export async function getStaticPaths() {
   const tags = await getTaxonomy("posts", "tags");
@@ -19,6 +19,7 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 
+const allTags = await getTaxonomy("posts", "tags");
 const posts = await getSinglePage("posts");
 const filterByTags = taxonomyFilter(posts, "tags", tag);
 const sortedPosts = sortByDate(filterByTags);
@@ -26,12 +27,47 @@ const sortedPosts = sortByDate(filterByTags);
 const title = humanize(tag || "");
 ---
 
-<Base title={title || "Tag"}>
+<Base
+  title={`#${title}`}
+  meta_title={`#${title} 관련 글 | 준현의 기록`}
+  description={`'${title}' 태그가 포함된 프론트엔드 개발 및 엔지니어링 포스트 목록입니다.`}
+>
   <div class="section">
     <div class="container">
-      <p class="text-center text-2xl mb-4">Showing Posts From</p>
-      <h1 class="h2 mb-16 text-center text-primary">#{title}</h1>
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <p class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">Tagged with</p>
+        <h1 class="h2 mb-6 text-primary">#{title}</h1>
+
+        {/* Tag chips navigation */}
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
+          <a
+            href="/"
+            class="rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+          >
+            전체 보기
+          </a>
+          {
+            allTags.map((t) => {
+              const isActive = slugify(t) === tag;
+              return (
+                <a
+                  href={`/tags/${slugify(t)}`}
+                  class={`rounded-full px-3.5 py-1.5 text-xs font-medium transition ${
+                    isActive
+                      ? "bg-primary text-white shadow-sm"
+                      : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                  }`}
+                >
+                  #{humanize(t)}
+                </a>
+              );
+            })
+          }
+        </div>
+      </div>
+
       <Posts posts={sortedPosts} fluid={false} />
     </div>
   </div>
 </Base>
+

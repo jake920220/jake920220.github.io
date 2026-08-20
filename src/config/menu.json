@@ -9,12 +9,8 @@
       "url": "/about"
     },
     {
-      "name": "Tech",
-      "url": "/tech"
-    },
-    {
-      "name": "Book Review",
-      "url": "/book-review"
+      "name": "Tags",
+      "url": "/tags"
     }
   ],
   "footer": [
@@ -27,12 +23,11 @@
       "url": "/about"
     },
     {
-      "name": "Tech",
-      "url": "/tech"
-    },
-    {
-      "name": "Book Review",
-      "url": "/book-review"
+      "name": "Tags",
+      "url": "/tags"
     }
   ]
 }
+
+
+

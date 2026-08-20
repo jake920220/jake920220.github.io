@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
 
+Disallow: /search
+Disallow: /search/
+Disallow: /elements
+Disallow: /elements/
 Disallow: /api/*
 
 Sitemap: https://jake920220.github.io/sitemap.xml

@@ -7,17 +7,7 @@ date: 2026-04-21T00:00:00Z
 image: "/images/tech/harness-engineering-spiky-pomodoro/harness_thumbnail.png"
 categories: ["tech"]
 authors: ["Blog Owner"]
-tags:
-  [
-    "하네스 엔지니어링",
-    "AI 코딩",
-    "Codex",
-    "GSD",
-    "설계",
-    "검증",
-    "토이 프로젝트",
-    "에이전트",
-  ]
+tags: ["하네스 엔지니어링", "ai", "codex", "gsd"]
 draft: false
 ---
 

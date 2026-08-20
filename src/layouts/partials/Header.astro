@@ -17,6 +17,15 @@ export interface NavigationLink {
 }
 
 const { main }: { main: NavigationLink[] } = menu;
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+function isCurrentPage(url: string) {
+  const cleanUrl = url.replace(/\/$/, "") || "/";
+  if (cleanUrl === "/") {
+    return currentPath === "/";
+  }
+  return currentPath === cleanUrl || currentPath.startsWith(`${cleanUrl}/`);
+}
 ---
 
 <header class="header pt-6">
@@ -45,7 +54,7 @@ const { main }: { main: NavigationLink[] } = menu;
       <svg class="h-6 fill-current" viewBox="0 0 20 20">
         <title>Menu Close</title>
         <polygon
-          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          points="11 9 22 9 22 11 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
           transform="rotate(45 10 10)"></polygon>
       </svg>
     </label>
@@ -53,38 +62,50 @@ const { main }: { main: NavigationLink[] } = menu;
 
     <ul
       id="nav-menu"
-      class="navbar-nav order-3 hidden w-full md:order-1 md:flex md:w-auto"
+      class="navbar-nav order-3 hidden w-full md:order-1 md:flex md:w-auto items-center"
     >
       {
-        main.map((menu) => (
-          <>
-            {menu.hasChildren ? (
-              <li class="nav-item nav-dropdown group relative cursor-pointer">
-                <span class="nav-link inline-flex items-center">
-                  {menu.name}
-                  <svg class="h-5 w-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
-                </span>
-                <ul class="nav-dropdown-list hidden group-hover:block md:invisible md:absolute md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100">
-                  {menu.children?.map((child) => (
-                    <li class="nav-dropdown-item">
-                      <a href={child.url} class="nav-dropdown-link">
-                        {child.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ) : (
-              <li class="nav-item">
-                <a href={menu.url} class="nav-link block">
-                  {menu.name}
-                </a>
-              </li>
-            )}
-          </>
-        ))
+        main.map((menu) => {
+          const active = isCurrentPage(menu.url);
+          return (
+            <>
+              {menu.hasChildren ? (
+                <li class="nav-item nav-dropdown group relative cursor-pointer">
+                  <span class={`nav-link inline-flex items-center ${active ? "active-nav text-primary dark:text-primary font-bold bg-primary/10 dark:bg-primary/20 rounded-lg" : ""}`}>
+                    {menu.name}
+                    <svg class="h-5 w-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                  </span>
+                  <ul class="nav-dropdown-list hidden group-hover:block md:invisible md:absolute md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100">
+                    {menu.children?.map((child) => (
+                      <li class="nav-dropdown-item">
+                        <a href={child.url} class="nav-dropdown-link" data-nav-link>
+                          {child.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ) : (
+                <li class="nav-item">
+                  <a
+                    href={menu.url}
+                    data-nav-link
+                    data-nav-url={menu.url}
+                    class={`nav-link block transition-all duration-200 px-3.5 py-1.5 rounded-lg ${
+                      active
+                        ? "active-nav text-primary dark:text-primary font-bold bg-primary/10 dark:bg-primary/20 shadow-sm"
+                        : "text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800/70"
+                    }`}
+                  >
+                    {menu.name}
+                  </a>
+                </li>
+              )}
+            </>
+          );
+        })
       }
     </ul>
     <div class="order-1 ml-auto flex items-center md:order-2 md:ml-0">
@@ -100,3 +121,30 @@ const { main }: { main: NavigationLink[] } = menu;
     </div>
   </nav>
 </header>
+
+<script>
+  function updateActiveNav() {
+    const current = window.location.pathname.replace(/\/$/, "") || "/";
+    const links = document.querySelectorAll("[data-nav-link]");
+
+    links.forEach((link) => {
+      const url = (link.getAttribute("data-nav-url") || link.getAttribute("href") || "").replace(/\/$/, "") || "/";
+      let isActive = false;
+      if (url === "/") {
+        isActive = current === "/";
+      } else {
+        isActive = current === url || current.startsWith(url + "/");
+      }
+
+      if (isActive) {
+        link.classList.add("active-nav", "text-primary", "dark:text-primary", "font-bold", "bg-primary/10", "dark:bg-primary/20", "shadow-sm");
+        link.classList.remove("text-slate-700", "dark:text-slate-200");
+      } else {
+        link.classList.remove("active-nav", "text-primary", "dark:text-primary", "font-bold", "bg-primary/10", "dark:bg-primary/20", "shadow-sm");
+        link.classList.add("text-slate-700", "dark:text-slate-200");
+      }
+    });
+  }
+
+  document.addEventListener("astro:page-load", updateActiveNav);
+</script>

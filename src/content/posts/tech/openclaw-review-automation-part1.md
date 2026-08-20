@@ -6,17 +6,7 @@ date: 2026-03-28T00:00:00Z
 image: "/images/tech/openclaw-review-automation/openclaw-cover.jpg"
 categories: ["tech"]
 authors: ["Blog Owner"]
-tags:
-  [
-    "OpenClaw",
-    "오픈클로",
-    "서평",
-    "YES24",
-    "인스타그램",
-    "Playwright",
-    "자동화",
-    "에이전트",
-  ]
+tags: ["openclaw", "자동화", "ai"]
 draft: false
 ---
 

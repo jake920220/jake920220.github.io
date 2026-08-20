@@ -6,11 +6,11 @@ date: 2026-04-01T00:00:00Z
 image: "/images/tech/openclaw-review-automation/openclaw-cover.jpg"
 categories: ["tech"]
 authors: ["Blog Owner"]
-tags: ["OpenClaw", "오픈클로", "사락", "YES24", "블로그 자동화", "서평", "자동화", "에이전트"]
+tags: ["openclaw", "자동화", "ai"]
 draft: false
 ---
 
-1부에서 이어지는 내용입니다. 이전 글: [OpenClaw로 서평 자동화 만들기 1부: 조회와 신청을 운영 가능한 흐름으로 바꾸기](/posts/tech/openclaw-review-automation-part1)
+1부에서 이어지는 내용입니다. 이전 글: [OpenClaw로 서평 자동화 만들기 1부: 조회와 신청을 운영 가능한 흐름으로 바꾸기](/tech/openclaw-review-automation-part1)
 
 1부에서 정리한 것은 책 관련 모집글을 발견하고, 신청까지 이어지는 흐름이었다. 그런데 막상 그 부분을 줄이고 나니 바로 다음 병목이 보였다. 신청은 빨라졌지만, **그 이후의 작업은 여전히 손이 많이 갔다.**
 

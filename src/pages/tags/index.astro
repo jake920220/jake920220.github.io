@@ -1,32 +1,52 @@
 ---
 import Base from "@/layouts/Base.astro";
-import { getTaxonomy } from "@/lib/taxonomyParser.astro";
-import { humanize } from "@/lib/utils/textConverter";
-
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { humanize, slugify } from "@/lib/utils/textConverter";
 import { FaHashtag } from "react-icons/fa";
 
-const tags = await getTaxonomy("posts", "tags");
+const posts = await getSinglePage("posts");
+
+// Count posts per tag
+const tagCounts: Record<string, number> = {};
+posts.forEach((post) => {
+  (post.data.tags || []).forEach((tag: string) => {
+    const slug = slugify(tag);
+    if (slug) {
+      tagCounts[slug] = (tagCounts[slug] || 0) + 1;
+    }
+  });
+});
+
+const sortedTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
 ---
 
-<Base title={"Tags"}>
+<Base
+  title={"Tags"}
+  meta_title={"태그 목록 | 준현의 기록 (기술 블로그)"}
+  description={"기술 블로그의 주제별 태그 목록입니다. 원하는 키워드로 관련된 개발 및 엔지니어링 글을 탐색해보세요."}
+>
   <section class="section">
-    <div class="container text-center">
-      <h1 class="h2 page-heading">Tags</h1>
-      <ul class="space-x-4">
+    <div class="container text-center max-w-3xl mx-auto">
+      <h1 class="h2 page-heading mb-4">Tags</h1>
+      <p class="text-text mb-10">관심 있는 주제의 태그를 선택하여 관련 기술 글을 탐색해보세요.</p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
         {
-          tags.map((tag) => (
-            <li class="inline-block">
-              <a
-                href={`/tags/${tag}`}
-                class="rounded-lg bg-light px-4 py-2 text-dark transition hover:bg-primary hover:text-white flex items-center group"
-              >
-                <FaHashtag className="mr-1 text-primary group-hover:text-white transition" />
-                {humanize(tag || "")}
-              </a>
-            </li>
+          sortedTags.map(([tag, count]) => (
+            <a
+              href={`/tags/${tag}`}
+              class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-primary hover:text-white dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-primary dark:hover:bg-primary dark:hover:text-white"
+            >
+              <FaHashtag className="text-xs opacity-60" />
+              <span>{humanize(tag)}</span>
+              <span class="inline-flex items-center justify-center rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-600 transition group-hover:bg-white/20 group-hover:text-white dark:bg-slate-700 dark:text-slate-300">
+                {count}
+              </span>
+            </a>
           ))
         }
-      </ul>
+      </div>
     </div>
   </section>
 </Base>
+

@@ -4,9 +4,10 @@ import { getCollection } from "astro:content";
 
 export async function GET(context: { site?: URL }) {
   const posts = await getCollection("posts", ({ data, id }) => {
-    // exclude drafts
-    return data.draft !== true;
+    // exclude drafts and non-article entries
+    return data.draft !== true && !id.startsWith("-index") && !id.startsWith("book-review");
   });
+
 
   // newest first
   posts.sort((a, b) => {
