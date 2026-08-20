@@ -80,28 +80,23 @@ const corporateTeaching = [
 const bootcampsTeaching = [
   {
     org: "팀스파르타",
-    title: "KDT 프론트엔드 개발 과정 · 풀타임 튜터",
-    desc: "JavaScript, TypeScript, React, Next.js 기반 기술 질의응답, 코드 리뷰 및 프로젝트 피드백",
+    roles: [
+      "KDT 프론트엔드 개발 과정 · 풀타임 튜터 (JavaScript, TypeScript, React, Next.js 기술 질의응답 및 프로젝트 피드백)",
+    ],
   },
   {
     org: "코드잇",
-    title: "KDT 풀스택 개발자 트랙 · 프론트엔드 파트 강사",
-    desc: "HTML/CSS, JavaScript, React 중심의 웹 프론트엔드 개발 교육",
-  },
-  {
-    org: "코드잇",
-    title: "프로덕트 디자이너 트랙 · 웹 퍼블리싱 & AI 바이브코딩 특강 강사",
-    desc: "HTML/CSS 웹 퍼블리싱과 생성형 AI를 활용한 웹 제작 및 바이브코딩 교육",
-  },
-  {
-    org: "코드잇",
-    title: "IT 창업 트랙 · 풀스택 개발 & Agentic Coding 강사",
-    desc: "웹 애플리케이션 개발과 AI Coding Agent 기반의 Agentic Coding 개발 교육",
+    roles: [
+      "KDT 풀스택 개발자 트랙 · 프론트엔드 파트 강사 (HTML/CSS, JavaScript, React 중심 개발 교육)",
+      "프로덕트 디자이너 트랙 · 웹 퍼블리싱 & AI 바이브코딩 특강 강사 (생성형 AI 활용 웹 제작 및 바이브코딩)",
+      "IT 창업 트랙 · 풀스택 개발 & Agentic Coding 강사 (AI Coding Agent 활용 개발 교육)",
+    ],
   },
   {
     org: "오즈코딩스쿨",
-    title: "KDT 개발 과정 · Git/GitHub · Next.js 특강 강사",
-    desc: "협업을 위한 Git/GitHub 및 Next.js 기반 웹 개발 특강",
+    roles: [
+      "KDT 개발 과정 · Git/GitHub 및 Next.js 기반 웹 개발 특강 강사",
+    ],
   },
 ];
 
@@ -150,39 +145,39 @@ const techSkills = {
   jsonLd={jsonLd}
 >
   {/* Hero Header */}
-  <section class="pt-8 pb-12">
+  <section class="pt-8 pb-14">
     <div class="container">
-      <div class="flex flex-col md:flex-row items-start gap-8 md:gap-12 pb-12 border-b border-slate-200 dark:border-slate-800">
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 pb-14 border-b border-slate-200 dark:border-slate-800">
         {
           image && (
-            <div class="shrink-0 mx-auto md:mx-0">
+            <div class="shrink-0">
               <Image
                 src={image}
-                width={220}
-                height={220}
+                width={360}
+                height={360}
                 alt={title}
-                class="rounded-2xl w-44 h-44 sm:w-52 sm:h-52 object-cover border border-slate-200 dark:border-slate-700 shadow-sm"
+                class="rounded-3xl w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 object-cover border border-slate-200 dark:border-slate-700 shadow-md"
               />
             </div>
           )
         }
 
         <div class="flex-1 text-left">
-          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-snug mb-4">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight mb-5">
             안녕하세요.<br class="hidden sm:inline" /> 프론트엔드 개발자이자 기술 강사 김준현입니다.
           </h1>
-          <p class="text-slate-700 dark:text-slate-200 leading-relaxed mb-3 text-base sm:text-lg">
-            “준현의 기록”은 <strong class="text-slate-900 dark:text-white font-bold">개발하고, 가르치고, AI와 함께 일하는 새로운 방식을 탐구하는</strong> 기술 블로그입니다.
+          <p class="text-slate-800 dark:text-slate-100 font-medium leading-relaxed mb-4 text-lg sm:text-xl">
+            “준현의 기록”은 <strong class="text-slate-950 dark:text-white font-bold">개발하고, 가르치고, AI와 함께 일하는 새로운 방식을 탐구하는</strong> 기술 블로그입니다.
           </p>
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6 text-sm sm:text-base">
+          <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-8 text-base sm:text-lg">
             7년간 웹과 앱 서비스를 개발하며 프론트엔드 엔지니어링 경험을 쌓았고, 이후 KDT 개발 교육과 기업교육으로 활동 영역을 확장해왔습니다.
-            React, Next.js, TypeScript를 중심으로 한 프론트엔드 개발을 기반으로 현재는 <strong class="text-slate-900 dark:text-white font-bold">AI Coding Agent, Agentic Coding, Context Engineering과 AX(AI Transformation)</strong>에 관심을 두고 개발과 교육 양쪽에서 경험을 쌓고 있습니다.
+            React, Next.js, TypeScript를 중심으로 한 프론트엔드 개발을 기반으로 현재는 <strong class="text-slate-950 dark:text-white font-bold">AI Coding Agent, Agentic Coding, Context Engineering과 AX(AI Transformation)</strong>에 관심을 두고 개발과 교육 양쪽에서 경험을 쌓고 있습니다.
           </p>
 
-          <div class="flex flex-wrap items-center gap-3">
+          <div class="flex flex-wrap items-center gap-3.5">
             <a
               href="mailto:kimjun8jun8@gmail.com"
-              class="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition hover:bg-primary/90"
+              class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-primary/90 hover:shadow"
             >
               <FaEnvelope />
               <span>Contact</span>
@@ -191,7 +186,7 @@ const techSkills = {
               href="https://github.com/jake920220"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-100/70 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+              class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-slate-100 px-5 py-3 text-base font-semibold text-slate-800 transition hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
             >
               <FaGithub />
               <span>GitHub</span>
@@ -200,7 +195,7 @@ const techSkills = {
               href="https://www.linkedin.com/in/linokim/"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-100/70 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+              class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-slate-100 px-5 py-3 text-base font-semibold text-slate-800 transition hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
             >
               <FaLinkedin />
               <span>LinkedIn</span>
@@ -212,67 +207,67 @@ const techSkills = {
   </section>
 
   {/* Main Bio Content */}
-  <section class="py-6">
+  <section class="py-10">
     <div class="container">
       <div class="max-w-3xl">
-        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-6">
           소개 및 배경
         </h2>
-        <div class="about-content text-slate-700 dark:text-slate-300 leading-relaxed space-y-4">
+        <div class="about-content text-slate-700 dark:text-slate-300 leading-relaxed text-base sm:text-lg space-y-5">
           <Content />
         </div>
       </div>
     </div>
   </section>
 
-  {/* What I Do - Clean Minimalist List */}
-  <section class="py-10 border-t border-slate-200 dark:border-slate-800">
+  {/* What I Do */}
+  <section class="py-12 border-t border-slate-200 dark:border-slate-800">
     <div class="container">
-      <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-10">
         무엇을 하고 있나요
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* 1. Frontend */}
-        <div class="space-y-2">
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            <span>🧩</span>
+        <div class="space-y-3">
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
+            <span class="text-2xl">🧩</span>
             <span>프론트엔드 엔지니어링</span>
           </h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
             React, Next.js, React Native를 중심으로 웹과 모바일 서비스를 개발해왔습니다. 단순한 화면 구현보다 실제 서비스가 운영되는 과정에서 발생하는 문제를 해결하는 것에 집중합니다.
           </p>
-          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
             레거시 프로젝트 재구축, 주문·결제 시스템, 관리자 도구, 모바일 WebView, 오류 모니터링과 사용자 행동 분석 등 제품의 개발부터 운영까지 다양한 문제를 경험했습니다.
           </p>
         </div>
 
         {/* 2. Education */}
-        <div class="space-y-2">
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            <span>🎓</span>
+        <div class="space-y-3">
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
+            <span class="text-2xl">🎓</span>
             <span>개발 교육 & 기업교육</span>
           </h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
             프론트엔드 실무 경험을 바탕으로 개발자를 교육하고, 최근에는 AI·AX를 주제로 한 기업교육으로 활동 영역을 넓히고 있습니다.
           </p>
-          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
             JS/TS, React, Next.js 웹 개발 기술부터 Claude Code, 바이브코딩, Agentic Coding, 생성형 AI와 AX 교육을 진행하며 비개발자가 AI를 이용해 직접 업무 방식을 혁신하도록 돕습니다.
           </p>
         </div>
 
         {/* 3. AI & Agentic */}
-        <div class="space-y-2">
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            <span>🤖</span>
+        <div class="space-y-3">
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
+            <span class="text-2xl">🤖</span>
             <span>AI · AX · Agentic Coding</span>
           </h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
             AI가 소프트웨어를 만드는 과정과 지식 노동의 방식 자체를 변화시키고 있습니다. 요구사항 정의, 컨텍스트 설계, 문서 기반 개발, 코드 생성, 테스트, 리뷰와 검증을 하나의 개발 프로세스로 연결합니다.
           </p>
-          <div class="flex flex-wrap gap-1.5 pt-1">
+          <div class="flex flex-wrap gap-2 pt-1">
             {aiTopics.map((topic) => (
-              <span class="rounded bg-slate-100 dark:bg-slate-800 px-2 py-0.5 text-xs text-slate-600 dark:text-slate-300">
+              <span class="rounded-lg bg-slate-100 border border-slate-200 dark:border-slate-700 dark:bg-slate-800 px-2.5 py-1 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">
                 {topic}
               </span>
             ))}
@@ -280,15 +275,15 @@ const techSkills = {
         </div>
 
         {/* 4. Notes */}
-        <div class="space-y-2">
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            <span>✍️</span>
+        <div class="space-y-3">
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
+            <span class="text-2xl">✍️</span>
             <span>기록 & 지식 체계화</span>
           </h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            개발하면서 알게 된 사실보다 <strong class="text-slate-900 dark:text-white font-semibold">왜 그런 판단을 했는지</strong>를 남기려고 합니다.
+          <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+            개발하면서 알게 된 사실보다 <strong class="text-slate-950 dark:text-white font-bold">왜 그런 판단을 했는지</strong>를 남기려고 합니다.
           </p>
-          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
             문제를 해결했던 과정, 기술 선택의 이유, 실패했던 접근, 강의를 준비하며 다시 공부하게 된 개념, AI와 함께 일하며 변화한 작업 방식까지 재사용 가능한 지식으로 정리합니다.
           </p>
         </div>
@@ -297,29 +292,29 @@ const techSkills = {
   </section>
 
   {/* Teaching Career Section */}
-  <section class="py-10 border-t border-slate-200 dark:border-slate-800">
+  <section class="py-12 border-t border-slate-200 dark:border-slate-800">
     <div class="container">
-      <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2">
         교육 및 강의 이력 (Teaching Career)
       </h2>
-      <p class="text-sm text-slate-500 dark:text-slate-400 mb-8">
+      <p class="text-base text-slate-600 dark:text-slate-400 mb-10">
         주요 기업 대상 AI·AX 교육 및 부트캠프 개발자 양성 교육 이력입니다.
       </p>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Corporate Teaching */}
         <div>
-          <h3 class="text-base font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4 pb-2 border-b border-slate-200 dark:border-slate-800">
+          <h3 class="text-lg font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-5 pb-2 border-b border-slate-200 dark:border-slate-800">
             🏢 AI · AX 기업교육
           </h3>
-          <div class="space-y-4">
+          <div class="space-y-5">
             {
               corporateTeaching.map((item) => (
-                <div class="pb-3 border-b border-slate-100 dark:border-slate-800/60 last:border-none">
-                  <div class="font-bold text-sm text-slate-900 dark:text-white mb-1">
+                <div class="pb-4 border-b border-slate-100 dark:border-slate-800/60 last:border-none">
+                  <div class="font-bold text-base text-slate-900 dark:text-white mb-1.5">
                     {item.company}
                   </div>
-                  <ul class="space-y-0.5 pl-4 list-disc text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                  <ul class="space-y-1 pl-4 list-disc text-sm sm:text-base text-slate-700 dark:text-slate-300">
                     {item.roles.map((role) => (
                       <li>{role}</li>
                     ))}
@@ -332,20 +327,21 @@ const techSkills = {
 
         {/* Bootcamps / Developer Training */}
         <div>
-          <h3 class="text-base font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4 pb-2 border-b border-slate-200 dark:border-slate-800">
+          <h3 class="text-lg font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-5 pb-2 border-b border-slate-200 dark:border-slate-800">
             💻 KDT · 개발자 교육
           </h3>
-          <div class="space-y-4">
+          <div class="space-y-5">
             {
               bootcampsTeaching.map((item) => (
-                <div class="pb-3 border-b border-slate-100 dark:border-slate-800/60 last:border-none">
-                  <div class="flex items-baseline gap-2 mb-0.5">
-                    <span class="font-bold text-sm text-slate-900 dark:text-white">{item.org}</span>
-                    <span class="text-xs text-primary font-medium">{item.title}</span>
+                <div class="pb-4 border-b border-slate-100 dark:border-slate-800/60 last:border-none">
+                  <div class="font-bold text-base text-slate-900 dark:text-white mb-1.5">
+                    {item.org}
                   </div>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                    {item.desc}
-                  </p>
+                  <ul class="space-y-1 pl-4 list-disc text-sm sm:text-base text-slate-700 dark:text-slate-300">
+                    {item.roles.map((role) => (
+                      <li>{role}</li>
+                    ))}
+                  </ul>
                 </div>
               ))
             }
@@ -356,18 +352,18 @@ const techSkills = {
   </section>
 
   {/* Philosophy Section */}
-  <section class="py-10 border-t border-slate-200 dark:border-slate-800">
+  <section class="py-12 border-t border-slate-200 dark:border-slate-800">
     <div class="container">
-      <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-8">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-10">
         개발과 교육에서 중요하게 생각하는 것
       </h2>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
         {
           philosophies.map((item) => (
-            <div class="space-y-1.5">
-              <h3 class="text-base font-bold text-slate-900 dark:text-white">{item.title}</h3>
-              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{item.desc}</p>
+            <div class="space-y-2">
+              <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">{item.title}</h3>
+              <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">{item.desc}</p>
             </div>
           ))
         }
@@ -376,22 +372,22 @@ const techSkills = {
   </section>
 
   {/* Skills & Tech Stack Section */}
-  <section class="py-10 border-t border-slate-200 dark:border-slate-800">
+  <section class="py-12 border-t border-slate-200 dark:border-slate-800">
     <div class="container">
-      <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-8">
         보유 기술 및 도구
       </h2>
 
-      <div class="space-y-6">
+      <div class="space-y-7">
         {
           Object.entries(techSkills).map(([category, skills]) => (
             <div>
-              <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5">
+              <h3 class="text-sm font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-3">
                 {category}
               </h3>
-              <div class="flex flex-wrap gap-2">
+              <div class="flex flex-wrap gap-2.5">
                 {skills.map((skill) => (
-                  <span class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700 dark:border-slate-700/80 dark:bg-slate-800 dark:text-slate-200">
+                  <span class="rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs sm:text-sm font-medium text-slate-800 dark:border-slate-700/80 dark:bg-slate-800 dark:text-slate-200">
                     {skill}
                   </span>
                 ))}
@@ -404,23 +400,23 @@ const techSkills = {
   </section>
 
   {/* Blog Topics */}
-  <section class="py-10 border-t border-slate-200 dark:border-slate-800">
+  <section class="py-12 border-t border-slate-200 dark:border-slate-800">
     <div class="container">
-      <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2">
         이 블로그에서 기록하는 것
       </h2>
-      <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">
+      <p class="text-base text-slate-600 dark:text-slate-400 mb-8">
         개발하면서 배우고, 가르치면서 다시 이해하고, AI와 함께 실험하며 얻은 생각들을 기록합니다.
       </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {
           blogTopics.map((topic) => (
-            <div class="space-y-1">
-              <div class="font-bold text-sm text-slate-900 dark:text-white">
+            <div class="space-y-1.5">
+              <div class="font-bold text-base text-slate-900 dark:text-white">
                 {topic.title}
               </div>
-              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">{topic.desc}</p>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{topic.desc}</p>
             </div>
           ))
         }
@@ -429,18 +425,18 @@ const techSkills = {
   </section>
 
   {/* Contact Section */}
-  <section class="py-12 border-t border-slate-200 dark:border-slate-800">
+  <section class="py-14 border-t border-slate-200 dark:border-slate-800">
     <div class="container">
       <div class="max-w-2xl">
-        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">Contact</h2>
-        <p class="text-sm text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-3">Contact</h2>
+        <p class="text-base text-slate-700 dark:text-slate-300 mb-7 leading-relaxed">
           프론트엔드 개발, 기술 교육, AI·AX 기업교육 및 기술 멘토링과 관련한 문의를 받고 있습니다.
         </p>
 
         <div class="flex flex-wrap items-center gap-4">
           <a
             href="mailto:kimjun8jun8@gmail.com"
-            class="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primary/90"
+            class="inline-flex items-center gap-2.5 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-white transition hover:bg-primary/90 shadow-sm"
           >
             <FaEnvelope />
             <span>kimjun8jun8@gmail.com</span>
@@ -449,7 +445,7 @@ const techSkills = {
             href="https://github.com/jake920220"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+            class="inline-flex items-center gap-2.5 rounded-xl border border-slate-300 bg-slate-50 px-6 py-3.5 text-base font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
           >
             <FaGithub />
             <span>GitHub @jake920220</span>
@@ -459,5 +455,6 @@ const techSkills = {
     </div>
   </section>
 </Base>
+
 
 
