@@ -3,10 +3,11 @@ title: "AI 에이전트와 함께 만드는 옵시디언 세컨드 브레인: �
 meta_title: "AI 에이전트와 옵시디언으로 구축하는 세컨드 브레인 | Second Brain 아키텍처와 자동화"
 description: "LLM 대화의 휘발성을 해결하고 AI 코딩 에이전트와 상호작용하는 옵시디언 세컨드 브레인 구축기. PARA 체계, 토큰 최적화 탐색, 심볼릭 링크 연동, 실전 정산 자동화까지 개발자 관점의 PKM 아키텍처를 정리했다."
 date: 2026-08-22T00:00:00Z
+modDatetime: 2026-08-22T00:00:00Z
 image: "/images/tech/building-ai-second-brain-with-obsidian/thumbnail.png"
 thumbnail: "/images/tech/building-ai-second-brain-with-obsidian/thumbnail.png"
 categories: ["tech"]
-authors: ["Blog Owner"]
+authors: ["김준현"]
 tags: ["ai", "obsidian", "second-brain", "자동화"]
 draft: false
 ---
