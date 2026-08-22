@@ -20,8 +20,11 @@ export const getSinglePage = async <C extends CollectionKey>(
 
   const removeIndex = allPages.filter((data) => data.id.match(/^(?!-)/));
 
+  const isDev = import.meta.env.DEV;
+
   const removeDrafts = removeIndex.filter((data) => {
     const pageData = data.data as PageData;
+    if (isDev) return true;
     return pageData.draft !== true;
   });
 
