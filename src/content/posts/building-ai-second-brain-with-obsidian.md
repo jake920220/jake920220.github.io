@@ -4,8 +4,8 @@ meta_title: "AI 에이전트와 옵시디언으로 구축하는 세컨드 브레
 description: "LLM 대화의 휘발성을 해결하고 AI 코딩 에이전트와 상호작용하는 옵시디언 세컨드 브레인 구축기. PARA 체계, 토큰 최적화 탐색, 심볼릭 링크 연동, 실전 정산 자동화까지 개발자 관점의 PKM 아키텍처를 정리했다."
 date: 2026-08-22T00:00:00Z
 modDatetime: 2026-08-22T00:00:00Z
-image: "/images/tech/building-ai-second-brain-with-obsidian/thumbnail.png"
-thumbnail: "/images/tech/building-ai-second-brain-with-obsidian/thumbnail.png"
+image: "/images/tech/building-ai-second-brain-with-obsidian/thumbnail.webp"
+thumbnail: "/images/tech/building-ai-second-brain-with-obsidian/thumbnail.webp"
 categories: ["tech"]
 authors: ["김준현"]
 tags: ["ai", "obsidian", "second-brain", "자동화"]
@@ -41,7 +41,7 @@ AI와의 대화창 안에서는 놀라운 코드 스니펫, 치밀한 설계 아
 | 비교 항목 | 별도 벡터 DB / 임베딩 파이프라인 구축 | 로컬 마크다운(Obsidian) + CLI 에이전트 |
 | :--- | :--- | :--- |
 | **인덱싱 방식** | 텍스트 청킹(Chunking) 및 임베딩 벡터 변환 | 순수 마크다운 파일 + 로컬 텍스트 색인 (`grep`, `find`) |
-| **인프라 관리** | 임베딩 모델 서빙, 벡터 DB 서버, 동기화 파이프라인 필요 | 인프라 비용 0원, OS 파일 시스템과 Git으로 완결 |
+| **인프라 관리** | 임베딩 모델 서빙, 벡터 DB 서버, 동기화 파이프라인 필요 | 별도 서버/DB 운영 비용 없음 (로컬 파일 시스템과 Git으로 완결) |
 | **수정 및 피드백** | 문서 수정 시 임베딩 재색인 파이프라인 동작 필요 | 파일 수정 즉시 에이전트가 최신 파일 상태 반영 |
 | **도구 단순성** | 별도 검색 API 서버 및 파이프라인 연동 필요 | 에이전트의 기본 파일 읽기/쓰기 도구로 직접 상호작용 |
 
@@ -189,7 +189,7 @@ ln -s "/Users/kimjunhyun/blog/src/content/posts" "/Users/kimjunhyun/Documents/Ob
 - 15:00 - 17:00 [[30 Resources/AI/Obsidian Second Brain with AI Agents|세컨드 브레인 아키텍처 정리]]
 ```
 
-이렇게 작성하면, 나중에 특정 프로젝트 문서를 열었을 때 옵시디언의 백링크(Backlinks) 패널에 내가 8월 21일 일기에서 이 프로젝트를 언급한 내역이 자동으로 모여 보인다. 시간축(일기)과 주제축(프로젝트/리소스)이 인위적인 데이터 중복 없이 완벽하게 상호 참조되는 것이다.
+이렇게 작성하면, 나중에 특정 프로젝트 문서를 열었을 때 옵시디언의 백링크(Backlinks) 패널에 내가 8월 21일 일기에서 이 프로젝트를 언급한 내역이 자동으로 모여 보인다. 시간축(일기)과 주제축(프로젝트/리소스)이 인위적인 데이터 중복 없이 유연하게 상호 참조되는 것이다.
 
 
 ## 실전 도메인 적용: 기업교육 관리 및 Dataview 실시간 자동 정산
@@ -275,7 +275,7 @@ status: active
         │
         ▼
 [ Obsidian 볼트 ]
-  └── 로컬 마크다운 기반의 투명하고 종속성 없는 Single Source of Truth
+  └── 로컬 마크다운 기반의 투명하고 특정 벤더에 종속되지 않는 Single Source of Truth
 ```
 
 - **인간의 역할**: 폴더를 어디로 정할지, 링크를 어떻게 걸지 고민하느라 에너지를 낭비하지 않는다. 그저 `00 Inbox`에 날것의 생각과 대화 로그를 거침없이 던져두고, 핵심적인 판단과 사유에 온전히 집중한다.

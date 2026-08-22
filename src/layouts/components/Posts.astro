@@ -1,11 +1,11 @@
 ---
 import TagItem from "@/components/TagItem.astro";
 import dateFormat from "@/lib/utils/dateFormat";
-import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
+import { plainify, slugify } from "@/lib/utils/textConverter";
 
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import { BiCalendarEdit, BiCategoryAlt } from "react-icons/bi";
+import { BiCalendarEdit } from "react-icons/bi";
 
 type Props = {
   posts: CollectionEntry<"posts">[];
@@ -20,7 +20,9 @@ function getExcerpt(post: CollectionEntry<"posts">) {
   if (manual && String(manual).trim().length > 0) return String(manual).trim();
   const desc = (post.data as any).description;
   if (desc && String(desc).trim().length > 0) return String(desc).trim();
-  const text = plainify(post.body ?? "").replace(/\s+/g, " ").trim();
+  const text = plainify(post.body ?? "")
+    .replace(/\s+/g, " ")
+    .trim();
   return text.length > 160 ? `${text.slice(0, 160).trim()}…` : text;
 }
 ---
@@ -32,7 +34,8 @@ function getExcerpt(post: CollectionEntry<"posts">) {
     posts.map((post, i: number) => {
       const w = i === 0 && fluid != false ? 925 : 445;
       const h = i === 0 && fluid != false ? 475 : 230;
-      const postImage = post.data.thumbnail || post.data.image || "/images/og-image.png";
+      const postImage =
+        post.data.thumbnail || post.data.image || "/images/og-image.png";
 
       return (
         <div
@@ -43,37 +46,35 @@ function getExcerpt(post: CollectionEntry<"posts">) {
           data-post-tags={post.data.tags.map((t) => slugify(t)).join(",")}
         >
           <a
-            href={`/${post.id}`}
-            class="rounded-lg block hover:text-primary overflow-hidden group"
+            href={`/${post.id}/`}
+            class="hover:text-primary group block overflow-hidden rounded-lg"
           >
-            {
-              postImage && (
-                <div class="w-full aspect-[16/9] relative overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                  <Image
-                    class="h-full w-full object-cover group-hover:scale-[1.03] transition duration-300"
-                    src={postImage}
-                    alt={post.data.title}
-                    width={w}
-                    height={h}
-                  />
-                </div>
-              )
-            }
+            {postImage && (
+              <div class="relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-800">
+                <Image
+                  class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                  src={postImage}
+                  alt={post.data.title}
+                  width={w}
+                  height={h}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  fetchpriority={i === 0 ? "high" : "auto"}
+                />
+              </div>
+            )}
           </a>
 
-
-          <ul class="mt-6 mb-4 flex flex-wrap items-center text-text">
-            <li class="mr-5 flex items-center flex-wrap font-medium">
+          <ul class="text-text mt-6 mb-4 flex flex-wrap items-center">
+            <li class="mr-5 flex flex-wrap items-center font-medium">
               <BiCalendarEdit className="mr-1 h-5 w-5 text-gray-600" />
               {dateFormat(post.data.date!)}
             </li>
           </ul>
 
-
           <h3 class="mb-3">
             <a
-              href={`/${post.id}`}
-              class="block hover:text-primary transition duration-300"
+              href={`/${post.id}/`}
+              class="hover:text-primary block transition duration-300"
             >
               {post.data.title}
             </a>
@@ -86,7 +87,6 @@ function getExcerpt(post: CollectionEntry<"posts">) {
             ))}
           </ul>
           <p class="text-text line-clamp-2">{getExcerpt(post)}</p>
-
         </div>
       );
     })

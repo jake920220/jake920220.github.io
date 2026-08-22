@@ -34,7 +34,7 @@
   - `description` (1~2문장)
   - `date`
   - `modDatetime` (수정 시 갱신)
-  - `categories` (`["tech"]`)
+  - `categories` (`["tech"]` 또는 `["book-review"]`)
   - `authors` (`["김준현"]`)
   - `tags` (2~4개 제한)
   - `draft`

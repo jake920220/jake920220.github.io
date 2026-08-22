@@ -8,13 +8,13 @@ import similerItems from "@/lib/utils/similarItems";
 import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
 import { Image } from "astro:assets";
 import { render } from "astro:content";
-import { BiCalendarEdit, BiCategoryAlt } from "react-icons/bi";
+import { BiCalendarEdit } from "react-icons/bi";
 
 const posts = await getSinglePage("posts");
 const { post } = Astro.props;
-const similarPosts = similerItems(post, posts, post.slug);
+const similarPosts = similerItems(post, posts, post.id);
 const { Content } = await render(post);
-const { title, description, categories, image, thumbnail, date, tags } = post.data;
+const { title, description, image, thumbnail, date, tags } = post.data;
 const headerImage = thumbnail || image;
 
 // 이전글/다음글: 전체 포스트 최신순 기준 이동
@@ -34,16 +34,15 @@ const prevPost =
 <section class="section">
   <div class="container">
     <article class="row justify-center">
-      <div class="md:col-10 text-center">
+      <div class="text-center md:col-10">
         <h1 set:html={markdownify(title)} class="h2" />
-        <ul class="mt-4 flex flex-wrap items-center justify-center text-text">
-          <li class="mx-3 flex items-center flex-wrap font-medium">
+        <ul class="text-text mt-4 flex flex-wrap items-center justify-center">
+          <li class="mx-3 flex flex-wrap items-center font-medium">
             <BiCalendarEdit className="mr-1 h-5 w-5 text-gray-600" />
             {dateFormat(date)}
           </li>
         </ul>
       </div>
-
 
       <div class="col-12 mt-8 mb-2">
         {
@@ -53,7 +52,9 @@ const prevPost =
               height={500}
               width={1000}
               alt={title}
-              class="rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.12)] mb-8"
+              loading="eager"
+              fetchpriority="high"
+              class="mb-8 rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.12)]"
             />
           )
         }
@@ -70,8 +71,8 @@ const prevPost =
               tags.map((tag: string) => (
                 <li>
                   <a
-                    href={`/tags/${slugify(tag)}`}
-                    class="block rounded-lg bg-light px-4 py-2 font-semibold text-dark text-sm hover:text-primary transition duration-300"
+                    href={`/tags/${slugify(tag)}/`}
+                    class="bg-light text-dark hover:text-primary block rounded-lg px-4 py-2 text-sm font-semibold transition duration-300"
                   >
                     #{humanize(tag)}
                   </a>
@@ -90,19 +91,17 @@ const prevPost =
         {/* prev/next: tags+share 아래, giscus 위 */}
         {
           (prevPost || nextPost) && (
-            <div class="mt-6 mb-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="mt-6 mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {prevPost && (
                 <a
-                  href={`/${prevPost.id}`}
-                  class="prev-next-card group block rounded-2xl bg-white p-6 shadow-[0_1px_0_rgba(15,23,42,0.04)] ring-1 ring-inset ring-slate-200/70 transition-colors duration-200 hover:bg-primary/5 hover:ring-primary/30"
+                  href={`/${prevPost.id}/`}
+                  class="prev-next-card group hover:bg-primary/5 hover:ring-primary/30 block rounded-2xl bg-white p-6 shadow-[0_1px_0_rgba(15,23,42,0.04)] ring-1 ring-slate-200/70 transition-colors duration-200 ring-inset"
                 >
                   <div class="prev-next-meta flex items-center gap-2 text-xs font-semibold text-slate-600">
-                    <span class="prev-next-arrow">
-                      ←
-                    </span>
+                    <span class="prev-next-arrow">←</span>
                     <span>이전 글</span>
                   </div>
-                  <p class="mt-3 text-dark font-semibold line-clamp-2 min-h-[3rem] group-hover:text-primary transition-colors duration-200">
+                  <p class="text-dark group-hover:text-primary mt-3 line-clamp-2 min-h-[3rem] font-semibold transition-colors duration-200">
                     {prevPost.data.title}
                   </p>
                 </a>
@@ -110,19 +109,17 @@ const prevPost =
 
               {nextPost && (
                 <a
-                  href={`/${nextPost.id}`}
+                  href={`/${nextPost.id}/`}
                   class={
-                    "prev-next-card group block rounded-2xl bg-white p-6 shadow-[0_1px_0_rgba(15,23,42,0.04)] ring-1 ring-inset ring-slate-200/70 transition-colors duration-200 hover:bg-primary/5 hover:ring-primary/30 text-right " +
+                    "prev-next-card group hover:bg-primary/5 hover:ring-primary/30 block rounded-2xl bg-white p-6 text-right shadow-[0_1px_0_rgba(15,23,42,0.04)] ring-1 ring-slate-200/70 transition-colors duration-200 ring-inset " +
                     (!prevPost ? "sm:col-start-2" : "")
                   }
                 >
                   <div class="prev-next-meta flex items-center justify-end gap-2 text-xs font-semibold text-slate-600">
                     <span>다음 글</span>
-                    <span class="prev-next-arrow">
-                      →
-                    </span>
+                    <span class="prev-next-arrow">→</span>
                   </div>
-                  <p class="mt-3 text-dark font-semibold line-clamp-2 min-h-[3rem] group-hover:text-primary transition-colors duration-200">
+                  <p class="text-dark group-hover:text-primary mt-3 line-clamp-2 min-h-[3rem] font-semibold transition-colors duration-200">
                     {nextPost.data.title}
                   </p>
                 </a>
@@ -138,7 +135,7 @@ const prevPost =
 <!-- comments -->
 <section class="section pt-0">
   <div class="container">
-    <div class="md:col-10 mx-auto">
+    <div class="mx-auto md:col-10">
       <Giscus />
     </div>
   </div>
@@ -149,7 +146,7 @@ const prevPost =
   similarPosts.length > 0 && (
     <section class="section pt-0">
       <div class="container">
-        <h2 class="mb-8 text-center h3">Similar Posts</h2>
+        <h2 class="h3 mb-8 text-center">Similar Posts</h2>
         <SimilarPosts posts={similarPosts.slice(0, 3)} />
       </div>
     </section>

@@ -5,7 +5,7 @@ description: "스핔이 뽀모도로 펫 토이 프로젝트를 진행하며, Co
 excerpt: "AI 코딩 시대에 더 중요해진 것은 구현 속도보다 설계와 검증이다. 스핔이 뽀모도로 펫 토이 프로젝트를 진행하며 하네스 엔지니어링을 통해 느낀 점을 정리했다."
 date: 2026-04-21T00:00:00Z
 modDatetime: 2026-08-22T00:00:00Z
-image: "/images/tech/harness-engineering-spiky-pomodoro/harness_thumbnail.png"
+image: "/images/tech/harness-engineering-spiky-pomodoro/thumbnail.webp"
 categories: ["tech"]
 authors: ["김준현"]
 tags: ["하네스 엔지니어링", "ai", "codex", "gsd"]
